@@ -1,0 +1,214 @@
+# ⚛️ {{titleCase name}}
+
+> A modern React component package, fully typed, tested, and monorepo-ready.
+
+## 📖 Table of Contents
+
+- [Overview](#-overview)
+- [Tech Stack](#-tech-stack)
+- [Features](#-features)
+- [Prerequisites & Installation](#-prerequisites--installation)
+- [Quickstart](#-quickstart)
+- [Project Structure](#-project-structure)
+- [Available Scripts](#️-available-scripts)
+- [Usage](#-usage)
+- [Exports & Conventions](#-exports--conventions)
+- [Turbo Generators](#-turbo-generators)
+- [Testing & Quality](#-testing--quality)
+- [CI/CD & Publishing](#-cicd--publishing)
+- [Security & Best Practices](#-security--best-practices)
+- [FAQ & Troubleshooting](#-faq--troubleshooting)
+- [License](#-license)
+
+## 🎯 Overview
+
+This package provides reusable, type-safe React components and hooks, with automated exports, ESM/CJS support, and monorepo integration. Designed for professional use, easy maintenance, and extension.
+
+> **Note:** This package is generated via the monorepo Turbo generators. Use `pnpm gen` to scaffold or sync components. See [Turbo Generators](#-turbo-generators).
+
+## 🧑‍💻 Tech Stack
+
+| Technology       | Main Purpose                  |
+| ---------------- | ----------------------------- |
+| React >= 19         | UI components                 |
+| TypeScript       | Static typing, robustness     |
+| tsdown           | ESM/CJS build, optimal bundle |
+| Vitest           | Unit testing                  |
+| Turbo generators | Code scaffolding              |
+| pnpm             | Package manager               |
+| Node.js ≥ 24     | Runtime                       |
+
+## ✨ Features
+
+- ⚛️ React 19 functional components
+- 📦 ESM & CJS, fully typed
+- 🧪 Unit tests with Vitest
+- 🔄 Auto-generated exports (src/ & package.json)
+- 🛠️ Turbo generators for scaffolding
+- 🚀 Ready for CI/CD and publishing
+
+## ⚡ Prerequisites & Installation
+
+- **Node.js** ≥ 24.0.0
+- **pnpm** ≥ 10.0.0
+- **nvm** recommended
+
+```bash
+# From monorepo root
+nvm use
+pnpm install
+```
+
+### Install the package
+
+```bash
+pnpm add @myorg/react-package
+```
+
+## 🚀 Quickstart
+
+```tsx
+import { Button } from '@myorg/react-package'
+
+export function App() {
+	return <Button>Click me</Button>
+}
+```
+
+## 📂 Project Structure
+
+```text
+react-package/
+├── src/
+│   ├── Button.tsx          # Example component
+│   └── index.ts            # Entry point
+├── tests/
+│   └── Button.test.tsx     # Component tests
+├── turbo/
+│   ├── package.json        # Generator config
+│   └── generators/
+│       ├── config.ts       # Generator definitions
+│       └── templates/      # Shared templates
+├── package.json
+├── tsconfig.json
+├── tsconfig.test.json
+├── tsdown.config.ts        # Build config
+└── vitest.config.ts        # Test config
+```
+
+## 🛠️ Available Scripts
+
+| Command             | Description                |
+| ------------------- | -------------------------- |
+| `pnpm dev`          | Watch mode + auto rebuild  |
+| `pnpm typecheck`    | Type checking              |
+| `pnpm test`         | Run all tests              |
+| `pnpm test --watch` | Watch mode for tests       |
+| `pnpm build`        | Production build (ESM/CJS) |
+| `pnpm clean`        | Clean generated files      |
+
+## 📦 Usage
+
+### Components
+
+```tsx
+import { Button } from '@myorg/react-package'
+
+const App = () => <Button disabled>Click me</Button>
+```
+
+## 📤 Exports & Conventions
+
+This package uses conditional exports for maximum compatibility:
+
+```json
+{
+	"exports": {
+		".": "./src/index.ts"
+	},
+	"publishConfig": {
+		"exports": {
+			".": {
+				"import": "./dist/index.js",
+				"require": "./dist/index.cjs",
+				"types": "./dist/index.d.ts"
+			}
+		}
+	}
+}
+```
+
+- **Automatic sync:** Use `pnpm gen` → "sync exports" to update exports and index.
+- **Convention:** Each component/utility has its own source and test file.
+
+## ⚡ Turbo Generators
+
+Generators are included to automate React component creation and export sync.
+
+### Create a React component
+
+```bash
+# From monorepo root
+pnpm turbo gen @myorg/react-package create react component
+# Or from the package directory
+pnpm gen
+```
+
+- Creates `src/YourComponent.tsx` and `tests/YourComponent.test.tsx`
+- Updates exports in `package.json` and `src/index.ts`
+
+### Sync exports
+
+```bash
+pnpm turbo gen @myorg/react-package sync exports
+# or
+pnpm gen
+```
+
+- Scans `src/` and updates all exports automatically.
+
+## 🧪 Testing & Quality
+
+Tests are written with **Vitest**:
+
+```tsx
+import { render, screen } from '@testing-library/react'
+import { Button } from '@myorg/react-package'
+
+describe('Button', () => {
+	it('renders children', () => {
+		render(<Button>OK</Button>)
+		expect(screen.getByText('OK')).toBeInTheDocument()
+	})
+})
+```
+
+- **Hot reload:** `pnpm dev`
+- **Coverage:** `pnpm test -- --coverage`
+- **Structure:** Each component/utility has its own dedicated test in `tests/`
+
+## 🚀 CI/CD & Publishing
+
+- **CI lint/test/build:** See `.github/workflows/check-code.yml`
+- **Publishing:** via pipeline or `pnpm publish --filter=@myorg/react-package`
+- **Versioning:** Follows SemVer and monorepo guidelines.
+
+## 🔒 Security & Best Practices
+
+- **Type safety:** All exports are strictly typed.
+- **No unnecessary dependencies:** Minimal package.
+- **Exhaustive tests:** Every component/utility must be tested.
+- **Export sync:** Mandatory before any publish.
+
+## ❓ FAQ & Troubleshooting
+
+- **Export issues?**
+	- Run `pnpm gen` → "sync exports".
+- **Tests failing?**
+	- Check Node.js and pnpm version, rerun `pnpm install`.
+- **Adding a component/utility?**
+	- Use the dedicated generator, do not edit index manually.
+
+## 📝 License
+
+MIT

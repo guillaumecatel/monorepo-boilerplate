@@ -1,0 +1,22 @@
+{
+  "npm.packageManager": "pnpm",
+  "files.autoSave": "onFocusChange",
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "explicit"
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "astro",
+    "css",
+    "typescript",
+    "typescriptreact",
+    "json",
+    "jsonc",
+    "json5",
+    "markdown"
+  ],
+  "tailwindCSS.classFunctions": ["cva", "cx"]
+}

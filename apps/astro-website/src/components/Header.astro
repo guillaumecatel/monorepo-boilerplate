@@ -1,0 +1,83 @@
+---
+import { m } from '@/i18n/messages'
+
+import { getLocale, locales, localizeHref } from '@/i18n/runtime'
+
+const currentLocale = getLocale()
+const availableLanguages = locales
+
+const navigationItems = [
+  {
+    href: '/',
+    label: m.go_to_homepage(),
+  },
+  {
+    href: '/about',
+    label: m.about(),
+  },
+]
+
+const localeEndonymMap = {
+  en: 'English',
+  fr: 'Français',
+}
+---
+
+<header>
+  <nav
+    class='flex flex-col gap-4'
+    aria-label={m.main_navigation()}>
+    <ul class='flex flex-row items-center gap-4'>
+      {
+        navigationItems.map((item) => {
+          const isCurrentPage = Astro.url.pathname === item.href
+          return (
+            <li>
+              <a
+                class={isCurrentPage ? 'font-bold' : ''}
+                href={localizeHref(item.href, { locale: currentLocale })}
+                {...(isCurrentPage ? { 'aria-current': 'page' } : {})}>
+                {item.label}
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </nav>
+
+  <nav
+    class='flex flex-col gap-4'
+    aria-label={m.language_selector()}>
+    <ul class='flex flex-row items-center gap-4'>
+      {
+        availableLanguages.map((locale) => {
+          const isCurrentLocale = locale === currentLocale
+          return (
+            <li>
+              <a
+                href={localizeHref(Astro.url.pathname, { locale })}
+                hreflang={locale}
+                lang={locale}
+                {...(isCurrentLocale ? { 'aria-current': 'page' } : {})}>
+                <span class='sr-only'>
+                  {m.show_this_page_translated_in(
+                    {
+                      languageName: localeEndonymMap[locale],
+                    },
+                    { locale: locale },
+                  )}
+                </span>
+                <span
+                  class={isCurrentLocale ? 'font-bold' : ''}
+                  aria-hidden='true'>
+                  {locale}
+                </span>
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </nav>
+</header>

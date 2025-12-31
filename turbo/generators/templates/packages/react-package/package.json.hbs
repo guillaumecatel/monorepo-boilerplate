@@ -1,0 +1,59 @@
+{
+  "name": "@{{organizationScopeName}}/{{kebabCase name}}",
+  "version": "0.0.1",
+  "type": "module",
+  "license": "MIT",
+  "description": "{{sentenceCase description}}",
+  "keywords": {{{keywordsExtract description}}},
+  "homepage": "{{organizationRepositoryUrl}}#readme",
+  "author": "{{organizationName}} <{{organizationEmail}}>",
+  "repository": {
+    "type": "git",
+    "url": "{{organizationRepositoryUrl}}.git"
+  },
+  "bugs": {
+    "url": "{{organizationRepositoryUrl}}/issues"
+  },
+  "files": ["./dist"],
+  "exports": {
+    "./button": "./src/Button.tsx",
+    ".": "./src/index.ts"
+  },
+  "publishConfig": {
+    "exports": {
+      "./button": {
+        "import": "./dist/Button.js",
+        "require": "./dist/Button.cjs",
+        "types": "./dist/Button.d.ts"
+      },
+      ".": {
+        "import": "./dist/*.js",
+        "require": "./dist/*.cjs",
+        "types": "./dist/*.d.ts"
+      }
+    }
+  },
+  "scripts": {
+    "build": "tsdown",
+    "dev": "tsdown --watch",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage}"
+  },
+  "peerDependencies": {
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.1",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "@vitest/coverage-v8": "4.0.16",
+    "jsdom": "^27.4.0",
+    "tsdown": "^0.18.4",
+    "typescript": "^5.9.3",
+    "typescript-config": "workspace:*",
+    "vitest": "^4.0.16"
+  }
+}

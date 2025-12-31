@@ -1,0 +1,15 @@
+{
+  "name": "typescript-config",
+  "version": "0.1.0",
+  "type": "module",
+  "license": "MIT",
+  "description": "",
+  "keywords": [
+    ""
+  ],
+  "exports": {
+    ".": "./base.json",
+    "./base.json": "./base.json",
+    "./react.json": "./react.json"
+  }
+}

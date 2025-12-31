@@ -1,0 +1,13 @@
+node_modules/
+dist/
+coverage/
+i18n/
+.astro/
+.husky/
+
+.git
+.svn
+.hg
+pnpm-lock.yaml
+
+**/turbo/generators/**/*.hbs

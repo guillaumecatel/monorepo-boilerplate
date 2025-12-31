@@ -1,0 +1,16 @@
+import { useEffect, useRef } from 'react'
+
+export function {{ camelCase name }}(callback: () => void | (() => void)) {
+  const ref = useRef(false)
+
+  useEffect(() => {
+    if (ref.current) return
+    ref.current = true
+
+    const cleanup = callback()
+
+    return typeof cleanup === 'function' ? cleanup : undefined
+  }, [])
+}
+
+export default {{ camelCase name }}

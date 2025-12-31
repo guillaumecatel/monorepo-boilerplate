@@ -1,0 +1,148 @@
+---
+import { Head as Capo } from 'astro-capo'
+import { ClientRouter } from 'astro:transitions'
+
+import type { AlternativeHrefLang } from '@/types'
+
+import { getLocale, localizeHref } from '@/i18n/runtime'
+
+import {
+  PROJECT_DARK_BACKGROUND_COLOR,
+  PROJECT_LIGHT_BACKGROUND_COLOR,
+  PROJECT_NAME,
+  TWITTER_HANDLE,
+} from '@/config'
+
+export interface Props {
+  title?: string
+  description?: string
+  url?: string
+  image?: string
+  type?: 'website' | 'article'
+  twitterHandle?: string
+  alternates?: AlternativeHrefLang[]
+  jsonLd?: Record<string, unknown>
+}
+
+const {
+  title,
+  description,
+  image = 'images/opengraph.png',
+  type = 'website',
+  twitterHandle = TWITTER_HANDLE,
+  jsonLd,
+  alternates = [],
+} = Astro.props
+
+const currentPage = Astro.url.href
+const locale = getLocale()
+const jsonLdToString = JSON.stringify(jsonLd, null, 2)
+const pageTitle = title ? ` ${title} | ${PROJECT_NAME}` : PROJECT_NAME
+---
+
+<Capo>
+  <meta charset='utf-8' />
+  <meta
+    name='viewport'
+    content='width=device-width, initial-scale=1, viewport-fit=cover'
+  />
+  <title>{pageTitle}</title>
+  <meta
+    name='description'
+    content={description}
+  />
+  {
+    alternates.map((locale) => (
+      <link
+        rel='alternate'
+        hreflang={locale.locale}
+        href={localizeHref(locale.href, { locale: locale.locale })}
+      />
+    ))
+  }
+  <ClientRouter />
+  <link
+    rel='icon'
+    type='image/svg+xml'
+    href='/icons/favicon.svg'
+  />
+  <link
+    rel='sitemap'
+    href='/sitemap.xml'
+  />
+  <meta
+    name='theme-color'
+    content={PROJECT_LIGHT_BACKGROUND_COLOR}
+    media='(prefers-color-scheme: light)'
+  />
+  <meta
+    name='theme-color'
+    content={PROJECT_DARK_BACKGROUND_COLOR}
+    media='(prefers-color-scheme: dark)'
+  />
+  <meta
+    name='mobile-web-app-capable'
+    content='yes'
+  />
+  <meta
+    name='apple-mobile-web-app-title'
+    content={PROJECT_NAME}
+  />
+  <meta
+    name='apple-mobile-web-app-status-bar-style'
+    content='black-translucent'
+  />
+  <link
+    rel='manifest'
+    href={localizeHref('/manifest.webmanifest', { locale })}
+  />
+  <meta
+    property='og:title'
+    content={pageTitle}
+  />
+  <meta
+    property='og:description'
+    content={description}
+  />
+  <meta
+    property='og:type'
+    content={type}
+  />
+  <meta
+    property='og:url'
+    content={localizeHref(currentPage, { locale })}
+  />
+  <meta
+    property='og:image'
+    content={image}
+  />
+  <meta
+    name='twitter:card'
+    content='summary_large_image'
+  />
+  <meta
+    name='twitter:title'
+    content={pageTitle}
+  />
+  <meta
+    name='twitter:description'
+    content={description}
+  />
+  <meta
+    name='twitter:image'
+    content={image}
+  />
+  <meta
+    name='twitter:site'
+    content={twitterHandle}
+  />
+  {
+    jsonLdToString && (
+      <script
+        type='application/ld+json'
+        is:inline
+        set:html={JSON.stringify(jsonLd)}
+      />
+    )
+  }
+</Capo>

@@ -1,0 +1,26 @@
+import type { PlopTypes } from '@turbo/gen'
+
+export default function generator(plop: PlopTypes.NodePlopAPI): void {
+  // Initialize helpers
+  plop.setHelper('internalTemplatePath', (templateName: string) => {
+    return `../../../../turbo/generators/templates/internal/${templateName}`
+  })
+
+  plop.setGenerator('@myorg/storybook-react create stories', {
+    description: '📖 Create a new stories file',
+    prompts: [
+      {
+        type: 'input',
+        name: 'name',
+        message: 'What is the name of the stories file?',
+      },
+    ],
+    actions: [
+      {
+        type: 'add',
+        path: 'src/{{pascalCase name}}.stories.tsx',
+        templateFile: '{{internalTemplatePath "react-stories"}}/file.hbs',
+      },
+    ],
+  })
+}

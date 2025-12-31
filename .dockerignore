@@ -1,0 +1,17 @@
+Dockerfile
+.dockerignore
+node_modules
+.ssh
+.git
+.gitignore
+*.md
+dist
+build
+.next
+storybook-static
+.turbo
+.astro
+coverage
+.DS_Store
+.env
+.npmrc

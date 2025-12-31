@@ -1,0 +1,53 @@
+---
+import { PROJECT_NAME } from '@/config'
+
+import { m } from '@/i18n/messages'
+import { getLocale, localizeHref } from '@/i18n/runtime'
+
+const currentLocale = getLocale()
+
+const navigationItems = [
+  {
+    label: m.privacy_policy(),
+    href: '/privacy-policy',
+  },
+  {
+    label: m.terms_and_conditions(),
+    href: '/terms-of-service',
+  },
+  {
+    label: m.cookie_policy(),
+    href: '/cookie-policy',
+  },
+  {
+    label: m.accessibility(),
+    href: '/accessibility',
+  },
+]
+---
+
+<footer>
+  <nav aria-label={m.legal_navigation()}>
+    <ul class='flex flex-row items-center gap-4'>
+      {
+        navigationItems.map((item) => {
+          const isCurrentPage = Astro.url.pathname === item.href
+          return (
+            <li>
+              <a
+                class={isCurrentPage ? 'font-bold' : ''}
+                href={localizeHref(item.href, { locale: currentLocale })}
+                {...(isCurrentPage ? { 'aria-current': 'page' } : {})}>
+                {item.label}
+              </a>
+            </li>
+          )
+        })
+      }
+    </ul>
+  </nav>
+  <div>
+    © {new Date().getFullYear()}
+    <a href={localizeHref('/')}> {PROJECT_NAME} </a>
+  </div>
+</footer>
