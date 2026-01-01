@@ -1,9 +1,14 @@
 # build output
 dist/
+build/
 
 # generated files
 .astro/
 .turbo/
+
+# next.js
+.next/
+out/
 
 # dependencies
 node_modules/
@@ -27,5 +32,20 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea
 
+# storybook
 *storybook.log
 storybook-static
+
+# typescript
+next-env.d.ts
+
+# miscellaneous
+/media
+
+# Playwright
+node_modules/
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
