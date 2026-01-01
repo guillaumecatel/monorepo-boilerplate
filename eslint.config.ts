@@ -4,7 +4,6 @@ import css from '@eslint/css'
 import js from '@eslint/js'
 import json from '@eslint/json'
 import markdown from '@eslint/markdown'
-import nextVitals from 'eslint-config-next/core-web-vitals'
 import pluginAstro from 'eslint-plugin-astro'
 import perfectionist from 'eslint-plugin-perfectionist'
 import pluginPrettier from 'eslint-plugin-prettier'
@@ -17,22 +16,14 @@ import { tailwind4 } from 'tailwind-csstree'
 import tseslint from 'typescript-eslint'
 
 export type Config = Partial<
-  Record<
-    'astro' | 'css' | 'json' | 'markdown' | 'next' | 'prettier' | 'react',
-    boolean
-  >
+  Record<'astro' | 'css' | 'json' | 'markdown' | 'prettier' | 'react', boolean>
 >
 
 const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
 
 const config = (config: Config) => {
   const defaultConfig: ConfigWithExtendsArray = [
-    globalIgnores([
-      './.husky/**',
-      'pnpm-lock.yaml',
-      '**/i18n/**',
-      '**/migrations/**',
-    ]),
+    globalIgnores(['./.husky/**', 'pnpm-lock.yaml', '**/i18n/**']),
     includeIgnoreFile(gitignorePath),
 
     tseslint.configs.recommended,
@@ -72,14 +63,6 @@ const config = (config: Config) => {
       },
     },
   ]
-
-  if (config.next) {
-    defaultConfig.push({
-      extends: nextVitals,
-      files: ['**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}'],
-      plugins: { js },
-    })
-  }
 
   if (config.react) {
     defaultConfig.push({
@@ -163,7 +146,6 @@ const config = (config: Config) => {
 
 export default config({
   astro: true,
-  next: true,
   css: false,
   json: true,
   markdown: true,
