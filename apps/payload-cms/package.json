@@ -5,9 +5,11 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
+    "postinstall": "pnpm paraglide",
+    "paraglide": "pnpm dlx @inlang/paraglide-js compile --project ../../.inlang --outdir ./src/i18n",
     "build": "next build --webpack",
     "typecheck": "tsc --noEmit",
-    "predev": "docker compose up -d && pnpm dlx @inlang/paraglide-js compile --project ../../.inlang --outdir ./src/i18n && payload seed",
+    "predev": "docker compose up -d && payload seed",
     "dev": "next dev --webpack",
     "generate:importmap": "payload generate:importmap",
     "generate:types": "payload generate:types",
