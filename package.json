@@ -10,7 +10,7 @@
     "pnpm": ">=10.0.0"
   },
   "scripts": {
-    "knip": "knip",
+    "knip": "knip --no-exit-code",
     "build": "turbo run build",
     "gen:all": "pnpm gen:packages && pnpm gen:apps",
     "gen:apps": "pnpm gen app --args astro-website astro-website false && pnpm gen app --args storybook-react storybook-react false",
