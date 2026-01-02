@@ -120,7 +120,10 @@ jobs:
           DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           DATABASE_PORT: 5432
           DATABASE_HOST: localhost
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+
         run: pnpm --filter payload-cms seed
 
       - name: 🧪 Test Payload CMS (Integration)
