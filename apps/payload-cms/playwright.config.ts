@@ -33,7 +33,7 @@ export default defineConfig({
     },
   ],
   webServer: {
-    command: process.env.CI ? 'pnpm dev --ignore-scripts' : 'pnpm dev',
+    command: process.env.CI ? 'pnpm dev:ci' : 'pnpm dev',
     reuseExistingServer: true,
     url: 'http://localhost:3000',
   },

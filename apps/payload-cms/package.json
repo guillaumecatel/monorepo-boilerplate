@@ -11,6 +11,7 @@
     "typecheck": "tsc --noEmit",
     "predev": "docker compose up -d && payload seed",
     "dev": "next dev --webpack",
+    "dev:ci": "next dev --webpack",
     "generate:importmap": "payload generate:importmap",
     "generate:types": "payload generate:types",
     "seed": "payload seed",
