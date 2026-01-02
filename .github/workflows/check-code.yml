@@ -113,6 +113,16 @@ jobs:
           restore-keys: |
             turbo-${{ runner.os }}-
 
+      - name: 🌱 Seed database
+        env:
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_PORT: 5432
+          DATABASE_HOST: localhost
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+        run: pnpm --filter payload-cms seed
+
       - name: 🧪 Test Payload CMS (Integration)
         env:
           DATABASE_USER: ${{ secrets.DATABASE_USER }}
