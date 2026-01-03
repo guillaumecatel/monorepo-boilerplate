@@ -76,7 +76,6 @@ export const isBoolean = (val: unknown): val is boolean =>
  */
 export const isFunction = (
   val: unknown,
-  // eslint-disable-next-line no-unused-vars
 ): val is (...args: unknown[]) => unknown => typeof val === 'function'
 
 /**

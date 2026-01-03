@@ -4,11 +4,13 @@ on:
   push:
     branches:
       - main
-      - feature/**
 
   pull_request:
     branches:
       - main
+
+permissions:
+  contents: read
 
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}
@@ -33,7 +35,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: 📥 Install dependencies
         run: pnpm install
@@ -56,13 +58,98 @@ jobs:
         run: pnpm lint
 
       - name: 🧼 Format
-        run: pnpm format --check
+        run: pnpm format
 
       - name: 🚨 Typecheck
         run: pnpm typecheck
 
       - name: 🧪 Unit tests
-        run: pnpm test -- --coverage
+        run: pnpm test --filter='!payload-cms' -- --coverage
 
       - name: 🏗️ Build
         run: pnpm build
+
+  test-payload-cms:
+    runs-on: ubuntu-latest
+
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: ${{ secrets.DATABASE_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🤓 Read .nvmrc
+        id: nvm
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+
+      - name: 📦 Install PNPM
+        uses: pnpm/action-setup@v4
+
+      - name: 🟢 Setup Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          cache: pnpm
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 💾 Cache Turborepo
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-
+
+      - name: 🌱 Seed database
+        env:
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_PORT: 5432
+          DATABASE_HOST: localhost
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
+
+        run: pnpm --filter payload-cms seed
+
+      - name: 🧪 Test Payload CMS (Integration)
+        env:
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_PORT: 5432
+          DATABASE_HOST: localhost
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
+
+        run: pnpm --filter payload-cms test:int
+      - name: 🧪 Test Payload CMS (E2E)
+        env:
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_PORT: 5432
+          DATABASE_HOST: localhost
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
+          PAYLOAD_URL: http://localhost:3000
+
+        run: pnpm --filter payload-cms test:e2e

@@ -30,7 +30,7 @@ This package provides reusable, type-safe React components and hooks, with autom
 
 | Technology       | Main Purpose                  |
 | ---------------- | ----------------------------- |
-| React >= 19         | UI components                 |
+| React >= 19      | UI components                 |
 | TypeScript       | Static typing, robustness     |
 | tsdown           | ESM/CJS build, optimal bundle |
 | Vitest           | Unit testing                  |
@@ -71,7 +71,7 @@ pnpm add @myorg/react-package
 import { Button } from '@myorg/react-package'
 
 export function App() {
-	return <Button>Click me</Button>
+  return <Button>Click me</Button>
 }
 ```
 
@@ -123,18 +123,18 @@ This package uses conditional exports for maximum compatibility:
 
 ```json
 {
-	"exports": {
-		".": "./src/index.ts"
-	},
-	"publishConfig": {
-		"exports": {
-			".": {
-				"import": "./dist/index.js",
-				"require": "./dist/index.cjs",
-				"types": "./dist/index.d.ts"
-			}
-		}
-	}
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "publishConfig": {
+    "exports": {
+      ".": {
+        "import": "./dist/index.js",
+        "require": "./dist/index.cjs",
+        "types": "./dist/index.d.ts"
+      }
+    }
+  }
 }
 ```
 
@@ -176,10 +176,10 @@ import { render, screen } from '@testing-library/react'
 import { Button } from '@myorg/react-package'
 
 describe('Button', () => {
-	it('renders children', () => {
-		render(<Button>OK</Button>)
-		expect(screen.getByText('OK')).toBeInTheDocument()
-	})
+  it('renders children', () => {
+    render(<Button>OK</Button>)
+    expect(screen.getByText('OK')).toBeInTheDocument()
+  })
 })
 ```
 
@@ -203,11 +203,11 @@ describe('Button', () => {
 ## ❓ FAQ & Troubleshooting
 
 - **Export issues?**
-	- Run `pnpm gen` → "sync exports".
+  - Run `pnpm gen` → "sync exports".
 - **Tests failing?**
-	- Check Node.js and pnpm version, rerun `pnpm install`.
+  - Check Node.js and pnpm version, rerun `pnpm install`.
 - **Adding a component/utility?**
-	- Use the dedicated generator, do not edit index manually.
+  - Use the dedicated generator, do not edit index manually.
 
 ## 📝 License
 

@@ -1,4 +1,5 @@
 import type { PlopTypes } from '@turbo/gen'
+
 import { readdirSync } from 'node:fs'
 import { join } from 'node:path'
 
@@ -14,10 +15,9 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
           const pkg = JSON.parse(content)
           const srcDir = join(__dirname, '../../src')
 
-          const files = readdirSync(srcDir)
-            .filter((file: string) =>
-              /\.(woff2?|ttf|otf|eot)$/i.test(file)
-            )
+          const files = readdirSync(srcDir).filter((file: string) =>
+            /\.(woff2?|ttf|otf|eot)$/i.test(file),
+          )
 
           // Reset exports
           pkg.exports = {}

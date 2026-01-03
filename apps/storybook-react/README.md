@@ -47,14 +47,14 @@ cd apps/<your-app-name>
 
 ## ✨ Features
 
-| Technology         | Purpose                        |
-| ------------------ | ------------------------------ |
-| Storybook 10       | UI component explorer          |
-| React 18           | Component framework            |
-| Paraglide.js       | Type-safe i18n                 |
-| Tailwind CSS 4     | Utility-first styling          |
-| TypeScript         | Type safety                    |
-| Vitest/Playwright  | Component & E2E testing        |
+| Technology        | Purpose                 |
+| ----------------- | ----------------------- |
+| Storybook 10      | UI component explorer   |
+| React 18          | Component framework     |
+| Paraglide.js      | Type-safe i18n          |
+| Tailwind CSS 4    | Utility-first styling   |
+| TypeScript        | Type safety             |
+| Vitest/Playwright | Component & E2E testing |
 
 - ♿ Accessibility testing (a11y addon)
 - 📝 Automatic documentation
@@ -113,13 +113,13 @@ apps/storybook-react/
 
 ## 📜 Available Scripts
 
-| Command          | Description                              |
-| ---------------  | ---------------------------------------- |
-| `pnpm dev`       | Start Storybook dev server (port 9009)   |
-| `pnpm build`     | Build static Storybook                   |
-| `pnpm typecheck` | Type checking                            |
-| `pnpm test`      | Run component tests with Vitest/Playwright|
-| `pnpm clean`     | Clean generated files                    |
+| Command          | Description                                |
+| ---------------- | ------------------------------------------ |
+| `pnpm dev`       | Start Storybook dev server (port 9009)     |
+| `pnpm build`     | Build static Storybook                     |
+| `pnpm typecheck` | Type checking                              |
+| `pnpm test`      | Run component tests with Vitest/Playwright |
+| `pnpm clean`     | Clean generated files                      |
 
 ## 🌍 Internationalization
 
@@ -165,9 +165,7 @@ export const Styled = () => (
 - Accessibility violations shown in Storybook panel
 
 ```tsx
-export const AccessibleButton = () => (
-  <button aria-label='Close'>×</button>
-)
+export const AccessibleButton = () => <button aria-label='Close'>×</button>
 AccessibleButton.parameters = {
   a11y: { config: { rules: [{ id: 'color-contrast', enabled: true }] } },
 }
@@ -216,8 +214,6 @@ export default {
 }
 ```
 
-
-
 ## 🚢 Build & Production Deployment
 
 - `pnpm build` génère la version statique de Storybook dans le dossier `storybook-static/`.
@@ -242,9 +238,9 @@ Par défaut, le serveur écoute sur le port 3001 (modifiable via la variable d'e
 
 #### Variables d'environnement
 
-| Variable | Par défaut | Description         |
-|----------|------------|--------------------|
-| PORT     | 3001       | Port du serveur    |
+| Variable | Par défaut | Description     |
+| -------- | ---------- | --------------- |
+| PORT     | 3001       | Port du serveur |
 
 #### Utilisation avec Docker
 
