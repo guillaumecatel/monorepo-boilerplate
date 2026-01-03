@@ -25,20 +25,6 @@ const {
   DATABASE_USER,
 } = process.env
 
-if (
-  !PAYLOAD_SECRET ||
-  !PAYLOAD_URL ||
-  !DATABASE_HOST ||
-  !DATABASE_NAME ||
-  !DATABASE_PASSWORD ||
-  !DATABASE_PORT ||
-  !DATABASE_USER
-) {
-  throw new Error(
-    'Environment variables DATABASE_HOST, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_PORT, and DATABASE_USER must be set.',
-  )
-}
-
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -59,7 +45,7 @@ export default buildConfig({
   },
   collections: [Users, Media],
   editor: lexicalEditor(),
-  secret: PAYLOAD_SECRET,
+  secret: PAYLOAD_SECRET!,
   serverURL: PAYLOAD_URL,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
