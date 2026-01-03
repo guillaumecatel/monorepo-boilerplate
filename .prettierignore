@@ -11,3 +11,6 @@ i18n/
 pnpm-lock.yaml
 
 **/turbo/generators/**/*.hbs
+
+payload.config.ts
+payload-types.ts

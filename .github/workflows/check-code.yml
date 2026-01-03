@@ -137,10 +137,6 @@ jobs:
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
 
         run: pnpm --filter payload-cms test:int
-
-      - name: 🎭 Install Playwright browsers
-        run: pnpm --filter payload-cms exec playwright install --with-deps
-
       - name: 🧪 Test Payload CMS (E2E)
         env:
           DATABASE_USER: ${{ secrets.DATABASE_USER }}
