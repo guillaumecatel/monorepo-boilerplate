@@ -33,7 +33,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: 📥 Install dependencies
         run: pnpm install
@@ -100,7 +100,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
-          cache: 'pnpm'
+          cache: pnpm
 
       - name: 📥 Install dependencies
         run: pnpm install
@@ -133,7 +133,10 @@ jobs:
           DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
           DATABASE_PORT: 5432
           DATABASE_HOST: localhost
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
           PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+
         run: pnpm --filter payload-cms test:int
 
       - name: 🎭 Install Playwright browsers
