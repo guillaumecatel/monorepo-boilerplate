@@ -6,10 +6,14 @@ export interface ButtonProps {
   disabled?: boolean
 }
 
-export const Button = ({ onClick, children, disabled = false }: ButtonProps) => {
+export const Button = ({
+  onClick,
+  children,
+  disabled = false,
+}: ButtonProps) => {
   return (
     <button
-      data-component="Button"
+      data-component='Button'
       className={`button ${disabled ? 'button--disabled' : ''}`}
       onClick={onClick}
       disabled={disabled}>

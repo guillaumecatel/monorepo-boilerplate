@@ -28,12 +28,12 @@ This package distributes web font files (WOFF, WOFF2, TTF, OTF, EOT) and provide
 
 ## 🧑‍💻 Tech Stack
 
-| Technology       | Main Purpose                  |
-| --------------- | ----------------------------- |
-| TypeScript      | Static typing, robustness     |
-| pnpm            | Package manager               |
-| Node.js ≥ 24    | Runtime                       |
-| Turbo generators| Code scaffolding              |
+| Technology       | Main Purpose              |
+| ---------------- | ------------------------- |
+| TypeScript       | Static typing, robustness |
+| pnpm             | Package manager           |
+| Node.js ≥ 24     | Runtime                   |
+| Turbo generators | Code scaffolding          |
 
 ## ✨ Features
 
@@ -69,10 +69,10 @@ pnpm add @myorg/font-package
 
 ## 🛠️ Available Scripts
 
-- `pnpm build`      — Copy fonts and types to dist/
-- `pnpm dev`        — Watch mode for development
-- `pnpm typecheck`  — Type checking
-- `pnpm clean`      — Remove build artifacts
+- `pnpm build` — Copy fonts and types to dist/
+- `pnpm dev` — Watch mode for development
+- `pnpm typecheck` — Type checking
+- `pnpm clean` — Remove build artifacts
 
 ## 📦 Usage
 

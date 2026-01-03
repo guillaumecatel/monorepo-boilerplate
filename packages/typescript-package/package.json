@@ -4,7 +4,9 @@
   "type": "module",
   "license": "MIT",
   "description": "False",
-  "keywords": ["false"],
+  "keywords": [
+    "false"
+  ],
   "homepage": "https://github.com/myorg/my-repo#readme",
   "author": "My Org <contact@myorg.com>",
   "repository": {
@@ -14,7 +16,9 @@
   "bugs": {
     "url": "https://github.com/myorg/my-repo/issues"
   },
-  "files": ["./dist"],
+  "files": [
+    "./dist"
+  ],
   "exports": {
     "./alias": "./src/alias.ts",
     "./guards": "./src/guards.ts",
