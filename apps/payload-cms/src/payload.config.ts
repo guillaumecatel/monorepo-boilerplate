@@ -15,6 +15,30 @@ import { migrations } from '@/migrations'
 const filename = fileURLToPath(import.meta.url)
 const dirname = path.dirname(filename)
 
+const {
+  PAYLOAD_SECRET,
+  PAYLOAD_URL,
+  DATABASE_HOST,
+  DATABASE_NAME,
+  DATABASE_PASSWORD,
+  DATABASE_PORT,
+  DATABASE_USER,
+} = process.env
+
+if (
+  !PAYLOAD_SECRET ||
+  !PAYLOAD_URL ||
+  !DATABASE_HOST ||
+  !DATABASE_NAME ||
+  !DATABASE_PASSWORD ||
+  !DATABASE_PORT ||
+  !DATABASE_USER
+) {
+  throw new Error(
+    'Environment variables DATABASE_HOST, DATABASE_NAME, DATABASE_PASSWORD, DATABASE_PORT, and DATABASE_USER must be set.',
+  )
+}
+
 export default buildConfig({
   admin: {
     user: Users.slug,
@@ -35,15 +59,15 @@ export default buildConfig({
   },
   collections: [Users, Media],
   editor: lexicalEditor(),
-  secret: process.env.PAYLOAD_SECRET || '',
-  serverURL: process.env.PAYLOAD_URL || '',
+  secret: PAYLOAD_SECRET,
+  serverURL: PAYLOAD_URL,
   typescript: {
     outputFile: path.resolve(dirname, 'payload-types.ts'),
   },
   db: postgresAdapter({
     prodMigrations: migrations,
     pool: {
-      connectionString: `postgres://${process.env.DATABASE_USER}:${process.env.DATABASE_PASSWORD}@${process.env.DATABASE_HOST}:${process.env.DATABASE_PORT}/${process.env.DATABASE_NAME}`,
+      connectionString: `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`,
     },
   }),
   sharp,
