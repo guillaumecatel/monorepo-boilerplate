@@ -1,7 +1,6 @@
 import type { APIRoute } from 'astro'
 
 import { PROJECT_DESCRIPTION, PROJECT_NAME, PROJECT_SHORT_NAME } from '@/config'
-
 import { getLocale, localizeHref } from '@/i18n/runtime'
 
 export const GET: APIRoute = async () => {

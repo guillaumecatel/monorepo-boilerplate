@@ -63,10 +63,10 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,astro,json,jsonc,json5,md}": [
-      "eslint"
+      "pnpm run lint"
     ],
     "*": [
-      "prettier --check ."
+      "pnpm run format"
     ]
   }
 }
