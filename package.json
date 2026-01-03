@@ -17,9 +17,11 @@
     "gen:packages": "pnpm gen package --args typescript-package typescript-package false && pnpm gen package --args react-package react-package false && pnpm gen package --args font-package font-package false",
     "clean": "turbo run clean",
     "dev": "turbo run dev",
-    "format": "prettier --write .",
+    "format": "prettier --check .",
+    "format:fix": "prettier --write .",
     "gen": "turbo gen",
-    "lint": "eslint --fix",
+    "lint": "eslint",
+    "lint:fix": "eslint --fix",
     "prepare": "husky",
     "test": "turbo run test",
     "typecheck": "turbo run typecheck",
@@ -61,10 +63,10 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,astro,json,jsonc,json5,md}": [
-      "eslint --fix"
+      "pnpm lint:fix"
     ],
     "*": [
-      "prettier --write --ignore-unknown ."
+      "pnpm format:fix"
     ]
   }
 }
