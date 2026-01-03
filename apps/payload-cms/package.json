@@ -17,7 +17,7 @@
     "seed": "payload seed",
     "start": "next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
-    "test:e2e": "pnpm pnpm exec playwright test",
+    "test:e2e": "pnpm exec playwright test",
     "test:int": "vitest",
     "clean": "shx rm -rf {node_modules,.turbo,.next,next-env.d.ts,coverage,storybook-static}"
   },

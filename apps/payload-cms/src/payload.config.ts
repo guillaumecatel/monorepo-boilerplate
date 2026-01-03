@@ -67,7 +67,11 @@ export default buildConfig({
   db: postgresAdapter({
     prodMigrations: migrations,
     pool: {
-      connectionString: `postgres://${DATABASE_USER}:${DATABASE_PASSWORD}@${DATABASE_HOST}:${DATABASE_PORT}/${DATABASE_NAME}`,
+      host: DATABASE_HOST,
+      port: Number(DATABASE_PORT),
+      database: DATABASE_NAME,
+      user: DATABASE_USER,
+      password: DATABASE_PASSWORD,
     },
   }),
   sharp,

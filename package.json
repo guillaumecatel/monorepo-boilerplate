@@ -63,10 +63,10 @@
   },
   "lint-staged": {
     "*.{js,mjs,cjs,ts,mts,cts,jsx,tsx,astro,json,jsonc,json5,md}": [
-      "pnpm run lint"
+      "pnpm run lint:fix"
     ],
     "*": [
-      "pnpm run format"
+      "pnpm run format:fix"
     ]
   }
 }
