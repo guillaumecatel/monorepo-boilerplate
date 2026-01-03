@@ -5,7 +5,7 @@
   "license": "MIT",
   "type": "module",
   "scripts": {
-    "postinstall": "pnpm paraglide",
+    "postinstall": "pnpm paraglide && pnpm exec playwright install --with-deps",
     "paraglide": "pnpm dlx @inlang/paraglide-js compile --project ../../.inlang --outdir ./src/i18n",
     "build": "next build --webpack",
     "typecheck": "tsc --noEmit",
@@ -17,7 +17,7 @@
     "seed": "payload seed",
     "start": "next start",
     "test": "pnpm run test:int && pnpm run test:e2e",
-    "test:e2e": "pnpm exec playwright test",
+    "test:e2e": "pnpm pnpm exec playwright test",
     "test:int": "vitest",
     "clean": "shx rm -rf {node_modules,.turbo,.next,next-env.d.ts,coverage,storybook-static}"
   },
@@ -27,7 +27,6 @@
     "@payloadcms/richtext-lexical": "3.69.0",
     "@payloadcms/translations": "3.69.0",
     "@payloadcms/ui": "3.69.0",
-    "cross-env": "^10.1.0",
     "dotenv": "17.2.3",
     "graphql": "^16.12.0",
     "next": "16.1.1",
@@ -46,10 +45,7 @@
     "@vitejs/plugin-react": "5.1.2",
     "jsdom": "27.4.0",
     "playwright": "1.57.0",
-    "playwright-core": "1.57.0",
-    "prettier": "^3.4.2",
     "typescript": "5.9.3",
-    "typescript-config": "workspace:*",
     "vite-tsconfig-paths": "6.0.3",
     "vitest": "4.0.16"
   }
