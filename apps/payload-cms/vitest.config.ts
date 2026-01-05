@@ -1,9 +1,9 @@
 import react from '@vitejs/plugin-react'
-import tsconfigPaths from 'vite-tsconfig-paths'
+import path from 'node:path'
 import { defineConfig } from 'vitest/config'
 
 export default defineConfig({
-  plugins: [tsconfigPaths(), react()],
+  plugins: [react()],
   test: {
     globals: true,
     typecheck: {
@@ -12,5 +12,12 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['tests/setup-tests.ts'],
     include: ['tests/int/**/*.test.ts'],
+  },
+  resolve: {
+    alias: {
+      '@payload-config': path.resolve(__dirname, './src/payload.config.ts'),
+      '~': path.resolve(__dirname, './'),
+      '@': path.resolve(__dirname, './src'),
+    },
   },
 })

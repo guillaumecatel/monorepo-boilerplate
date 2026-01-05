@@ -45,3 +45,6 @@ playwright/.cache/
 # Storybook
 *storybook.log
 storybook-static
+
+# TypeScript
+*.tsbuildinfo

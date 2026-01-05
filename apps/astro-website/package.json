@@ -3,12 +3,11 @@
   "type": "module",
   "version": "0.0.1",
   "scripts": {
-    "postinstall": "astro sync",
     "dev": "astro dev",
     "build": "astro build",
     "start": "node server.mjs",
     "typecheck": "astro check",
-    "test": "vitest",
+    "test": "vitest run",
     "astro": "astro",
     "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,.astro}"
   },
@@ -33,6 +32,7 @@
     "tailwind-config": "workspace:*",
     "tailwindcss": "^4.1.18",
     "typescript": "^5.9.3",
+    "typescript-config": "workspace:*",
     "vitest": "^4.0.16"
   }
 }

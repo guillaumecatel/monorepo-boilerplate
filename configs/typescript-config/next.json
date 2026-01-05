@@ -1,12 +1,9 @@
 {
-  "extends": "typescript-config/next",
+  "display": "Next",
+  "extends": "./base.json",
   "compilerOptions": {
-    "baseUrl": ".",
-    "paths": {
-      "@payload-config": ["./src/payload.config.ts"],
-      "@/*": ["./src/*"],
-      "~/*": ["./*"]
-    }
+    "plugins": [{ "name": "next" }],
+    "jsx": "react-jsx"
   },
   "include": [
     "next-env.d.ts",

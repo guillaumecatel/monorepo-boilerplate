@@ -1,8 +1,0 @@
-{
-  "servers": {
-    "internal": {
-      "command": "node",
-      "args": ["${workspaceFolder}/mcp.mjs"]
-    }
-  }
-}

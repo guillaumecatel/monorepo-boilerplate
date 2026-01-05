@@ -3,7 +3,8 @@
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
     "astro-build.astro-vscode",
-    "EditorConfig.EditorConfig"
+    "EditorConfig.EditorConfig",
+    "vercel.turbo-vsc"
   ],
   "unwantedRecommendations": []
 }
