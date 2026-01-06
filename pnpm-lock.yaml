@@ -54,9 +54,6 @@ importers:
       lint-staged:
         specifier: 16.2.7
         version: 16.2.7
-      npm-check-updates:
-        specifier: 19.2.0
-        version: 19.2.0
       prettier:
         specifier: 3.7.4
         version: 3.7.4
@@ -5792,11 +5789,6 @@ packages:
   normalize-path@3.0.0:
     resolution: {integrity: sha512-6eZs5Ls3WtCisHWp9S2GUy8dqkpGi4BVSz3GaqiE6ezub0512ESztXUwUB6C6IKbQkY2Pnb/mD4WYojCRwcwLA==}
     engines: {node: '>=0.10.0'}
-
-  npm-check-updates@19.2.0:
-    resolution: {integrity: sha512-XSIuL0FNgzXPDZa4lje7+OwHjiyEt84qQm6QMsQRbixNY5EHEM9nhgOjxjlK9jIbN+ysvSqOV8DKNS0zydwbdg==}
-    engines: {node: '>=20.0.0', npm: '>=8.12.1'}
-    hasBin: true
 
   npm-package-arg@12.0.2:
     resolution: {integrity: sha512-f1NpFjNI9O4VbKMOlA5QoBq/vSQPORHcTZ2feJpFkTHJ9eQkdlmZEKSjcAhxTGInC7RlEyScT9ui67NaOsjFWA==}
@@ -14367,8 +14359,6 @@ snapshots:
       undefsafe: 2.0.5
 
   normalize-path@3.0.0: {}
-
-  npm-check-updates@19.2.0: {}
 
   npm-package-arg@12.0.2:
     dependencies:
