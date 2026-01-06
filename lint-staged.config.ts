@@ -1,3 +1,3 @@
 export default {
-  '*': ['pnpm format:fix', 'pnpm lint'],
+  '*': ['pnpm format:fix', 'pnpm lint:fix'],
 }
