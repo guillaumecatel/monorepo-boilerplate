@@ -6,11 +6,11 @@ export default defineConfig({
   plugins: [react()],
   test: {
     globals: true,
+    environment: 'jsdom',
+    setupFiles: ['tests/setup.ts'],
     typecheck: {
       tsconfig: 'tsconfig.test.json',
     },
-    environment: 'jsdom',
-    setupFiles: ['tests/setup-tests.ts'],
     include: ['tests/int/**/*.test.ts'],
   },
   resolve: {

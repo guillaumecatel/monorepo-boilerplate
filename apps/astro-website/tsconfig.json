@@ -1,5 +1,5 @@
 {
-  "extends": "typescript-config/astro",
+  "extends": "@myorg/typescript-config/astro",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {
@@ -8,5 +8,5 @@
     }
   },
   "include": [".astro/types.d.ts", "**/*"],
-  "exclude": ["dist"]
+  "exclude": ["dist", "node_modules"]
 }

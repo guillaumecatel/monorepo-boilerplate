@@ -51,10 +51,10 @@
     "clean": "shx rm -rf {node_modules,.turbo,dist,coverage}"
   },
   "devDependencies": {
+    "@myorg/typescript-config": "workspace:*",
     "@vitest/coverage-v8": "4.0.16",
     "tsdown": "^0.18.4",
     "typescript": "^5.9.3",
-    "typescript-config": "workspace:*",
     "vitest": "^4.0.16"
   }
 }

@@ -1,5 +1,5 @@
 {
-  "extends": "typescript-config/react",
+  "extends": "@myorg/typescript-config/react",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

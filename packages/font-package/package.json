@@ -40,7 +40,7 @@
   "peerDependencies": {},
   "dependencies": {},
   "devDependencies": {
-    "nodemon": "^3.1.11",
-    "typescript-config": "workspace:*"
+    "@myorg/typescript-config": "workspace:*",
+    "nodemon": "^3.1.11"
   }
 }
