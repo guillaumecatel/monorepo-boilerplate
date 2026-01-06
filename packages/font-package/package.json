@@ -1,28 +1,23 @@
 {
   "name": "@myorg/font-package",
   "version": "0.0.1",
+  "description": "False",
   "type": "module",
   "license": "MIT",
-  "description": "False",
+  "author": "My Org <contact@myorg.com>",
+  "homepage": "https://github.com/myorg/my-repo#readme",
+  "repository": "myorg/my-repo.git",
+  "bugs": "https://github.com/myorg/my-repo/issues",
   "keywords": [
     "false"
   ],
-  "homepage": "https://github.com/myorg/my-repo#readme",
-  "author": "My Org <contact@myorg.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/myorg/my-repo.git"
-  },
-  "bugs": {
-    "url": "https://github.com/myorg/my-repo/issues"
-  },
   "files": [
     "./dist"
   ],
   "exports": {
-    "./inter-regular.ttf": "./src/Inter-Regular.ttf",
+    "./*": "./src/*",
     "./index.d.ts": "./src/index.d.ts",
-    "./*": "./src/*"
+    "./inter-regular.ttf": "./src/Inter-Regular.ttf"
   },
   "publishConfig": {
     "exports": {
@@ -33,14 +28,17 @@
   },
   "scripts": {
     "build": "shx mkdir -p dist && shx rm -rf dist/* && shx cp src/*.{woff,woff2,ttf,otf,eot} dist/ 2>/dev/null || true && shx cp src/index.d.ts dist/",
+    "clean": "shx rm -rf {node_modules,.turbo,dist}",
     "dev": "nodemon --watch src --ext woff,woff2,ttf,otf,eot,d.ts --exec 'shx mkdir -p dist && shx rm -rf dist/* && shx cp src/*.{woff,woff2,ttf,otf,eot} dist/ 2>/dev/null || true && shx cp src/index.d.ts dist/'",
-    "typecheck": "tsc --noEmit",
-    "clean": "shx rm -rf {node_modules,.turbo,dist}"
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {},
   "dependencies": {},
   "devDependencies": {
+    "@myorg/eslint-config": "workspace:*",
     "@myorg/typescript-config": "workspace:*",
-    "nodemon": "^3.1.11"
+    "nodemon": "3.1.11"
   }
 }

@@ -4,14 +4,13 @@ import { ClientRouter } from 'astro:transitions'
 
 import type { AlternativeHrefLang } from '@/types'
 
-import { getLocale, localizeHref } from '@/i18n/runtime'
-
 import {
   PROJECT_DARK_BACKGROUND_COLOR,
   PROJECT_LIGHT_BACKGROUND_COLOR,
   PROJECT_NAME,
   TWITTER_HANDLE,
 } from '@/config'
+import { getLocale, localizeHref } from '@/i18n/runtime'
 
 export interface Props {
   title?: string

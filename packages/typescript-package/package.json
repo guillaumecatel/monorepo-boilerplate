@@ -1,28 +1,23 @@
 {
   "name": "@myorg/typescript-package",
   "version": "0.0.1",
+  "description": "False",
   "type": "module",
   "license": "MIT",
-  "description": "False",
+  "author": "My Org <contact@myorg.com>",
+  "homepage": "https://github.com/myorg/my-repo#readme",
+  "repository": "myorg/my-repo.git",
+  "bugs": "https://github.com/myorg/my-repo/issues",
   "keywords": [
     "false"
   ],
-  "homepage": "https://github.com/myorg/my-repo#readme",
-  "author": "My Org <contact@myorg.com>",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/myorg/my-repo.git"
-  },
-  "bugs": {
-    "url": "https://github.com/myorg/my-repo/issues"
-  },
   "files": [
     "./dist"
   ],
   "exports": {
+    ".": "./src/index.ts",
     "./alias": "./src/alias.ts",
-    "./guards": "./src/guards.ts",
-    ".": "./src/index.ts"
+    "./guards": "./src/guards.ts"
   },
   "publishConfig": {
     "exports": {
@@ -45,16 +40,19 @@
   },
   "scripts": {
     "build": "tsdown",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage}",
     "dev": "tsdown --watch",
-    "typecheck": "tsc --noEmit",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
     "test": "vitest run",
-    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage}"
+    "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
+    "@myorg/eslint-config": "workspace:*",
     "@myorg/typescript-config": "workspace:*",
     "@vitest/coverage-v8": "4.0.16",
-    "tsdown": "^0.18.4",
-    "typescript": "^5.9.3",
-    "vitest": "^4.0.16"
+    "tsdown": "0.18.4",
+    "typescript": "5.9.3",
+    "vitest": "4.0.16"
   }
 }

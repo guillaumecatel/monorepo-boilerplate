@@ -1,10 +1,5 @@
-import { includeIgnoreFile } from '@eslint/compat'
-import { ConfigWithExtendsArray, globalIgnores } from '@eslint/config-helpers'
-import { fileURLToPath } from 'node:url'
-
-const gitignorePath = fileURLToPath(new URL('.gitignore', import.meta.url))
-
-export default [
-  globalIgnores(['./.husky/**', 'pnpm-lock.yaml', '**/i18n/**']),
-  includeIgnoreFile(gitignorePath),
-] as ConfigWithExtendsArray
+export { astroConfig } from './astro.ts'
+export { baseConfig, coreConfig, jsonMarkdownConfig } from './base.ts'
+export { nextConfig } from './next.ts'
+export { reactConfig } from './react.ts'
+export { storybookConfig } from './storybook.ts'

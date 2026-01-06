@@ -1,13 +1,12 @@
 {
   "name": "@myorg/tailwind-config",
   "version": "0.1.0",
+  "description": "",
   "type": "module",
   "license": "MIT",
-  "description": "",
   "keywords": [
     ""
   ],
-  "types": "./index.d.ts",
   "exports": {
     ".": "./index.css"
   },
@@ -15,6 +14,7 @@
     "clean": "shx rm -rf node_modules"
   },
   "peerDependencies": {
-    "tailwindcss": ">=4.0.0"
-  }
+    "tailwindcss": "^4.1.18"
+  },
+  "types": "./index.d.ts"
 }
