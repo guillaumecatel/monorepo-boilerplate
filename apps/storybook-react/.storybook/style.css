@@ -1,4 +1,4 @@
-@import 'tailwind-config';
+@import '@myorg/tailwind-config';
 
 /*
  * Explicitly registering sources
