@@ -1,3 +1,3 @@
-import { createBaseConfig } from '@myorg/eslint-config/base'
+import base from '@myorg/eslint-config'
 
-export default createBaseConfig(import.meta.dirname)
+export default base

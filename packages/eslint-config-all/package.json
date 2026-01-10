@@ -1,0 +1,22 @@
+{
+  "name": "@myorg/eslint-config-all",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "@myorg/eslint-config": "workspace:*",
+    "@myorg/eslint-config-astro": "workspace:*",
+    "@myorg/eslint-config-next": "workspace:*",
+    "@myorg/eslint-config-react": "workspace:*",
+    "@myorg/eslint-config-storybook": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "9.39.2"
+  }
+}

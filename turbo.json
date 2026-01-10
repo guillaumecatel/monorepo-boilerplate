@@ -23,11 +23,7 @@
       "cache": false
     },
     "lint": {
-      "dependsOn": ["^build"],
-      "cache": true
-    },
-    "lint:fix": {
-      "cache": false
+      "dependsOn": ["^lint"]
     },
     "clean": {
       "cache": false,

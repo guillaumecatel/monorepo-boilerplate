@@ -1,3 +1,3 @@
-import { createStorybookConfig } from '@myorg/eslint-config/storybook'
+import storybook from '@myorg/eslint-config-storybook'
 
-export default createStorybookConfig(import.meta.dirname)
+export default storybook

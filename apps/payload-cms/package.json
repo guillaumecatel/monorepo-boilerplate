@@ -39,7 +39,7 @@
   },
   "devDependencies": {
     "@inlang/paraglide-js": "2.7.1",
-    "@myorg/eslint-config": "workspace:*",
+    "@myorg/eslint-config-next": "workspace:*",
     "@myorg/tailwind-config": "workspace:*",
     "@myorg/typescript-config": "workspace:*",
     "@playwright/test": "1.57.0",

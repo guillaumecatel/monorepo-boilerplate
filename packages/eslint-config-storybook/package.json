@@ -1,0 +1,20 @@
+{
+  "name": "@myorg/eslint-config-storybook",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "peerDependencies": {
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "@myorg/eslint-config": "workspace:*",
+    "@myorg/eslint-config-react": "workspace:*",
+    "eslint-plugin-storybook": "10.1.11"
+  },
+  "devDependencies": {
+    "eslint": "9.39.2"
+  }
+}

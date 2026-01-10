@@ -1,5 +1,5 @@
 export default {
-  dependencyTypes: ['prod', 'dev'],
+  dependencyTypes: ['prod', 'dev', '!peer', '!local'],
   sortPackages: true,
   semverGroups: [
     {

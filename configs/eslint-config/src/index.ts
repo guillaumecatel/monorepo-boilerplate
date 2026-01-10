@@ -1,5 +1,0 @@
-export { astroConfig } from './astro.ts'
-export { baseConfig, coreConfig, jsonMarkdownConfig } from './base.ts'
-export { nextConfig } from './next.ts'
-export { reactConfig } from './react.ts'
-export { storybookConfig } from './storybook.ts'

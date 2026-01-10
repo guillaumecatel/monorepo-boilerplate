@@ -1,3 +1,3 @@
-import { createReactConfig } from '@myorg/eslint-config/react'
+import react from '@myorg/eslint-config-react'
 
-export default createReactConfig(import.meta.dirname)
+export default react

@@ -42,11 +42,11 @@
     "typecheck": "tsc --noEmit"
   },
   "peerDependencies": {
-    "react": "^19.2.3",
-    "react-dom": "^19.2.3"
+    "react": ">=19",
+    "react-dom": ">=19"
   },
   "devDependencies": {
-    "@myorg/eslint-config": "workspace:*",
+    "@myorg/eslint-config-react": "workspace:*",
     "@myorg/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.1",

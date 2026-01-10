@@ -1,13 +1,4 @@
-import { globalIgnores } from '@eslint/config-helpers'
-import { createBaseConfig } from '@myorg/eslint-config/base'
+import all from '@myorg/eslint-config-all'
 
-export default [
-  globalIgnores([
-    '.husky/**',
-    'pnpm-lock.yaml',
-    'apps/**',
-    'packages/**',
-    'configs/**',
-  ]),
-  ...createBaseConfig(import.meta.dirname),
-]
+// Config root for VSCode only
+export default all

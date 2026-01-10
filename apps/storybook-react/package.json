@@ -20,7 +20,7 @@
   },
   "devDependencies": {
     "@inlang/paraglide-js": "2.7.1",
-    "@myorg/eslint-config": "workspace:*",
+    "@myorg/eslint-config-storybook": "workspace:*",
     "@myorg/tailwind-config": "workspace:*",
     "@myorg/typescript-config": "workspace:*",
     "@storybook/addon-a11y": "10.1.11",

@@ -1,3 +1,3 @@
-import { createNextConfig } from '@myorg/eslint-config/next'
+import next from '@myorg/eslint-config-next'
 
-export default createNextConfig(import.meta.dirname)
+export default next
