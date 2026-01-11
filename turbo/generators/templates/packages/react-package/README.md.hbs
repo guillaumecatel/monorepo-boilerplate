@@ -62,13 +62,13 @@ pnpm install
 ### Install the package
 
 ```bash
-pnpm add @myorg/react-package
+pnpm add @guillaumecatel/react-package
 ```
 
 ## 🚀 Quickstart
 
 ```tsx
-import { Button } from '@myorg/react-package'
+import { Button } from '@guillaumecatel/react-package'
 
 export function App() {
 	return <Button>Click me</Button>
@@ -112,7 +112,7 @@ react-package/
 ### Components
 
 ```tsx
-import { Button } from '@myorg/react-package'
+import { Button } from '@guillaumecatel/react-package'
 
 const App = () => <Button disabled>Click me</Button>
 ```
@@ -149,7 +149,7 @@ Generators are included to automate React component creation and export sync.
 
 ```bash
 # From monorepo root
-pnpm turbo gen @myorg/react-package create react component
+pnpm turbo gen @guillaumecatel/react-package create react component
 # Or from the package directory
 pnpm gen
 ```
@@ -160,7 +160,7 @@ pnpm gen
 ### Sync exports
 
 ```bash
-pnpm turbo gen @myorg/react-package sync exports
+pnpm turbo gen @guillaumecatel/react-package sync exports
 # or
 pnpm gen
 ```
@@ -173,7 +173,7 @@ Tests are written with **Vitest**:
 
 ```tsx
 import { render, screen } from '@testing-library/react'
-import { Button } from '@myorg/react-package'
+import { Button } from '@guillaumecatel/react-package'
 
 describe('Button', () => {
 	it('renders children', () => {
@@ -190,7 +190,7 @@ describe('Button', () => {
 ## 🚀 CI/CD & Publishing
 
 - **CI lint/test/build:** See `.github/workflows/check-code.yml`
-- **Publishing:** via pipeline or `pnpm publish --filter=@myorg/react-package`
+- **Publishing:** via pipeline or `pnpm publish --filter=@guillaumecatel/react-package`
 - **Versioning:** Follows SemVer and monorepo guidelines.
 
 ## 🔒 Security & Best Practices

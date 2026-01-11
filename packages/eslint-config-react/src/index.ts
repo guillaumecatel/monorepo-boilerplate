@@ -1,4 +1,4 @@
-import base from '@myorg/eslint-config'
+import base from '@guillaumecatel/eslint-config'
 import pluginReact from 'eslint-plugin-react'
 
 const GLOB_TS = '**/*.{ts,tsx,cts,mts}'

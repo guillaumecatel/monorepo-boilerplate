@@ -19,9 +19,7 @@
     "test": {
       "outputs": ["coverage/**", "test-results/**", "playwright-report/**"]
     },
-    "typecheck": {
-      "cache": false
-    },
+    "typecheck": {},
     "lint": {
       "dependsOn": ["^lint"]
     },

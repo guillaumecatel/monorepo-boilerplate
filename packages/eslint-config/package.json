@@ -1,5 +1,5 @@
 {
-  "name": "@myorg/eslint-config",
+  "name": "@guillaumecatel/eslint-config",
   "version": "1.0.0",
   "type": "module",
   "private": true,

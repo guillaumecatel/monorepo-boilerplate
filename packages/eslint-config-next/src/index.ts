@@ -1,5 +1,5 @@
-import base from '@myorg/eslint-config'
-import react from '@myorg/eslint-config-react'
+import base from '@guillaumecatel/eslint-config'
+import react from '@guillaumecatel/eslint-config-react'
 
 const GLOB_TS = '**/*.{ts,tsx,cts,mts}'
 const GLOB_JS = '**/*.{js,jsx,cjs,mjs}'

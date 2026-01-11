@@ -10,7 +10,13 @@ export default {
       packages: ['**'],
     },
   ],
-  sortAz: ['peerDependencies', 'dependencies', 'devDependencies'],
+  sortAz: [
+    'peerDependencies',
+    'dependencies',
+    'devDependencies',
+    'exports',
+    'publishConfig',
+  ],
   sortFirst: [
     'name',
     'version',

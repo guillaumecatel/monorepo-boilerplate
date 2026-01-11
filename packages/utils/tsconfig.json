@@ -1,0 +1,10 @@
+{
+  "extends": "@guillaumecatel/typescript-config/base",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "~/*": ["./*"],
+      "@/*": ["./src/*"]
+    }
+  }
+}

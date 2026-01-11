@@ -1,5 +1,5 @@
 {
-  "name": "@myorg/eslint-config-react",
+  "name": "@guillaumecatel/eslint-config-react",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -10,7 +10,7 @@
     "eslint": "^9.39.2"
   },
   "dependencies": {
-    "@myorg/eslint-config": "workspace:*",
+    "@guillaumecatel/eslint-config": "workspace:*",
     "eslint-plugin-react": "7.37.5"
   },
   "devDependencies": {

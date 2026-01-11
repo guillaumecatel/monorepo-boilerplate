@@ -1,5 +1,5 @@
-import base from '@myorg/eslint-config'
-import react from '@myorg/eslint-config-react'
+import base from '@guillaumecatel/eslint-config'
+import react from '@guillaumecatel/eslint-config-react'
 import storybookPlugin from 'eslint-plugin-storybook'
 
 /**

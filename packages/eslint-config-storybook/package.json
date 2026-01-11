@@ -1,5 +1,5 @@
 {
-  "name": "@myorg/eslint-config-storybook",
+  "name": "@guillaumecatel/eslint-config-storybook",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -10,8 +10,8 @@
     "eslint": "^9.39.2"
   },
   "dependencies": {
-    "@myorg/eslint-config": "workspace:*",
-    "@myorg/eslint-config-react": "workspace:*",
+    "@guillaumecatel/eslint-config": "workspace:*",
+    "@guillaumecatel/eslint-config-react": "workspace:*",
     "eslint-plugin-storybook": "10.1.11"
   },
   "devDependencies": {

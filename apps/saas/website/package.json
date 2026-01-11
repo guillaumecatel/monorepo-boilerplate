@@ -1,0 +1,41 @@
+{
+  "name": "saas-website",
+  "version": "0.0.1",
+  "type": "module",
+  "scripts": {
+    "astro": "astro",
+    "build": "astro build",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,.astro}",
+    "dev": "astro dev",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "start": "node server.mjs",
+    "test": "vitest run --coverage",
+    "typecheck": "astro check"
+  },
+  "dependencies": {
+    "compression": "1.8.1",
+    "express": "5.2.1",
+    "helmet": "8.1.0",
+    "permissions-policy": "0.6.0"
+  },
+  "devDependencies": {
+    "@astrojs/check": "0.9.6",
+    "@astrojs/node": "9.5.1",
+    "@inlang/paraglide-js": "2.7.1",
+    "@guillaumecatel/eslint-config-astro": "workspace:*",
+    "@guillaumecatel/tailwind-config": "workspace:*",
+    "@guillaumecatel/typescript-config": "workspace:*",
+    "@playform/compress": "0.2.0",
+    "@tailwindcss/vite": "4.1.18",
+    "@types/compression": "1.8.1",
+    "@types/express": "5.0.6",
+    "@vitest/coverage-v8": "4.0.16",
+    "astro": "5.16.6",
+    "astro-capo": "0.0.1",
+    "astro-compressor": "1.2.0",
+    "tailwindcss": "4.1.18",
+    "typescript": "5.9.3",
+    "vitest": "4.0.16"
+  }
+}

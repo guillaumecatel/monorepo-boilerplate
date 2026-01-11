@@ -12,29 +12,29 @@ export default function initHelpers(plop: PlopTypes.NodePlopAPI): void {
 
   plop.setHelper(
     'organizationName',
-    () => process.env.ORGANIZATION_NAME ?? 'My Org',
+    () => process.env.ORGANIZATION_NAME ?? 'Toto Caca',
   )
 
   plop.setHelper(
     'organizationEmail',
-    () => process.env.ORGANIZATION_EMAIL ?? 'contact@myorg.com',
+    () => process.env.ORGANIZATION_EMAIL ?? 'contact@totocaca.fr',
   )
 
   plop.setHelper(
     'organizationScopeName',
-    () => process.env.ORGANIZATION_SCOPE_NAME ?? 'myorg',
+    () => process.env.ORGANIZATION_SCOPE_NAME ?? 'totocaca',
   )
 
   plop.setHelper(
     'organizationRepositoryName ',
-    () => process.env.ORGANIZATION_REPOSITORY_NAME ?? 'my-repo',
+    () => process.env.ORGANIZATION_REPOSITORY_NAME ?? 'monorepo',
   )
 
   plop.setHelper(
     'organizationRepositoryUrl',
     () =>
       process.env.ORGANIZATION_REPOSITORY_URL ??
-      'https://github.com/myorg/my-repo',
+      'https://github.com/guillaumecatel/monorepo',
   )
 
   plop.setHelper('getTemplates', (type: 'apps' | 'packages') => {

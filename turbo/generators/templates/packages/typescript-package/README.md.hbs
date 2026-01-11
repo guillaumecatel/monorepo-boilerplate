@@ -61,16 +61,16 @@
  ### Install the package
 
  ```bash
- pnpm add @myorg/typescript-package
+ pnpm add @guillaumecatel/typescript-package
  ```
 
  ## 🚀 Quickstart
 
  ```typescript
- import { isString, isNumber } from '@myorg/typescript-package'
+ import { isString, isNumber } from '@guillaumecatel/typescript-package'
  // or
- import { isString } from '@myorg/typescript-package/guards'
- import { kebabCase } from '@myorg/typescript-package/alias'
+ import { isString } from '@guillaumecatel/typescript-package/guards'
+ import { kebabCase } from '@guillaumecatel/typescript-package/alias'
 
  if (isString(value)) {
 	 console.log(value.toUpperCase())
@@ -116,7 +116,7 @@
  ### Type Guards (`guards.ts`)
 
  ```typescript
- import { isString, isNumber, isBoolean, isArray, isObject } from '@myorg/typescript-package/guards'
+ import { isString, isNumber, isBoolean, isArray, isObject } from '@guillaumecatel/typescript-package/guards'
 
  if (isString(value)) {
 	 // TypeScript knows value is string here
@@ -126,7 +126,7 @@
  ### Type Utilities (`alias.ts`)
 
  ```typescript
- import { Nullable, Maybe, Falsy, Primitive, Nullish } from '@myorg/typescript-package/alias'
+ import { Nullable, Maybe, Falsy, Primitive, Nullish } from '@guillaumecatel/typescript-package/alias'
 
  type Name = Nullable<string> // string | null
  type Age = Maybe<number>     // number | undefined
@@ -176,7 +176,7 @@
 
  ```bash
  # From monorepo root
- pnpm turbo gen @myorg/typescript-package create typescript file
+ pnpm turbo gen @guillaumecatel/typescript-package create typescript file
  # Or from the package directory
  pnpm gen
  ```
@@ -187,7 +187,7 @@
  ### Sync exports
 
  ```bash
- pnpm turbo gen @myorg/typescript-package sync exports
+ pnpm turbo gen @guillaumecatel/typescript-package sync exports
  # or
  pnpm gen
  ```
@@ -219,7 +219,7 @@
  ## 🚀 CI/CD & Publishing
 
  - **CI lint/test/build:** See `.github/workflows/check-code.yml`
- - **Publishing:** via pipeline or `pnpm publish --filter=@myorg/typescript-package`
+ - **Publishing:** via pipeline or `pnpm publish --filter=@guillaumecatel/typescript-package`
  - **Versioning:** Follows SemVer and monorepo guidelines.
 
  ## 🔒 Security & Best Practices

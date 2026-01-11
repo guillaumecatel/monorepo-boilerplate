@@ -1,4 +1,4 @@
-import base from '@myorg/eslint-config'
+import base from '@guillaumecatel/eslint-config'
 import * as parserTs from '@typescript-eslint/parser'
 import pluginAstro from 'eslint-plugin-astro'
 

@@ -1,0 +1,3 @@
+{
+  "extends": "@guillaumecatel/typescript-config/base"
+}

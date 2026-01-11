@@ -197,17 +197,17 @@ cp .env.example .env
 
 ### Available Variables
 
-| Variable                       | Description                        | Example                             |
-| ------------------------------ | ---------------------------------- | ----------------------------------- |
-| `ORGANIZATION_SCOPE_NAME`      | NPM scope for packages (without @) | `myorg`                             |
-| `ORGANIZATION_NAME`            | Organization display name          | `My Org`                            |
-| `ORGANIZATION_EMAIL`           | Contact email for package.json     | `contact@myorg.com`                 |
-| `ORGANIZATION_REPOSITORY_NAME` | Repository name                    | `monorepo`                          |
-| `ORGANIZATION_REPOSITORY_URL`  | Full repository URL                | `https://github.com/myorg/monorepo` |
+| Variable                       | Description                        | Example                                      |
+| ------------------------------ | ---------------------------------- | -------------------------------------------- |
+| `ORGANIZATION_SCOPE_NAME`      | NPM scope for packages (without @) | `guillaumecatel`                             |
+| `ORGANIZATION_NAME`            | Organization display name          | `Guillaume CATEL`                            |
+| `ORGANIZATION_EMAIL`           | Contact email for package.json     | `contact@guillaumecatel.com`                 |
+| `ORGANIZATION_REPOSITORY_NAME` | Repository name                    | `monorepo`                                   |
+| `ORGANIZATION_REPOSITORY_URL`  | Full repository URL                | `https://github.com/guillaumecatel/monorepo` |
 
 These variables are used by generators to:
 
-- Set the `@scope` prefix for package names (e.g., `@myorg/my-package`)
+- Set the `@scope` prefix for package names (e.g., `@guillaumecatel/my-package`)
 - Configure `author` field in generated `package.json` files
 - Set `repository` URLs in package metadata
 - Generate consistent naming across all packages
@@ -339,10 +339,10 @@ pnpm --filter=react-package add lodash
 pnpm --filter=react-package add -D @types/lodash
 
 # Add a workspace package as dependency
-pnpm --filter=astro-website add @myorg/react-package@workspace:*
+pnpm --filter=astro-website add @guillaumecatel/react-package@workspace:*
 
 # Run command in all packages matching pattern
-pnpm --filter="@myorg/*" build
+pnpm --filter="@guillaumecatel/*" build
 
 # Run command recursively in all packages
 pnpm -r exec pwd

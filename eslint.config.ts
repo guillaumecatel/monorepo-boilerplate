@@ -1,4 +1,4 @@
-import all from '@myorg/eslint-config-all'
+import all from '@guillaumecatel/eslint-config-all'
 
 // Config root for VSCode only
 export default all
