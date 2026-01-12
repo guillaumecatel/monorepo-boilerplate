@@ -28,7 +28,7 @@
   },
   "scripts": {
     "build": "shx mkdir -p dist && shx rm -rf dist/* && shx cp src/*.{woff,woff2,ttf,otf,eot} dist/ 2>/dev/null || true && shx cp src/index.d.ts dist/",
-    "clean": "shx rm -rf {node_modules,.turbo,dist}",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,tsconfig.tsbuildinfo}",
     "dev": "nodemon --watch src --ext woff,woff2,ttf,otf,eot,d.ts --exec 'shx mkdir -p dist && shx rm -rf dist/* && shx cp src/*.{woff,woff2,ttf,otf,eot} dist/ 2>/dev/null || true && shx cp src/index.d.ts dist/'",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",

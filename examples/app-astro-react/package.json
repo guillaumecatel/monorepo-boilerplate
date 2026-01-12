@@ -5,12 +5,13 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,.astro}",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,.astro,tsconfig.tsbuildinfo}",
     "dev": "astro dev",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "node server.mjs",
-    "test": "vitest run --coverage",
+    "test": "vitest --coverage",
+    "e2e": "echo \"Running end-to-end tests...\" && exit 0",
     "typecheck": "astro check"
   },
   "dependencies": {

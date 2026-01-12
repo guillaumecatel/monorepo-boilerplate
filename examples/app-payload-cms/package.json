@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build --webpack",
-    "clean": "shx rm -rf {node_modules,.turbo,.next,next-env.d.ts,coverage,storybook-static}",
+    "clean": "shx rm -rf {node_modules,.turbo,.next,next-env.d.ts,coverage,storybook-static,tsconfig.tsbuildinfo}",
     "dev": "next dev --webpack",
     "dev:ci": "next dev --webpack",
     "generate:importmap": "payload generate:importmap",
@@ -18,9 +18,8 @@
     "predev": "docker compose up -d && payload seed",
     "seed": "payload seed",
     "start": "next start",
-    "test": "vitest run --coverage",
-    "test:e2e": "pnpm exec playwright test",
-    "test:int": "vitest",
+    "test": "vitest --coverage",
+    "e2e": "pnpm exec playwright test",
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {

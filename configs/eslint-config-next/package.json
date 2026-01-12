@@ -1,20 +1,20 @@
 {
-  "name": "@resona/eslint-config-all",
+  "name": "@resona/eslint-config-next",
   "version": "1.0.0",
   "type": "module",
   "private": true,
   "exports": {
     ".": "./src/index.ts"
   },
+  "scripts": {
+    "clean": "shx rm -rf node_modules"
+  },
   "peerDependencies": {
     "eslint": "^9.39.2"
   },
   "dependencies": {
     "@resona/eslint-config": "workspace:*",
-    "@resona/eslint-config-astro": "workspace:*",
-    "@resona/eslint-config-next": "workspace:*",
-    "@resona/eslint-config-react": "workspace:*",
-    "@resona/eslint-config-storybook": "workspace:*"
+    "@resona/eslint-config-react": "workspace:*"
   },
   "devDependencies": {
     "eslint": "9.39.2"

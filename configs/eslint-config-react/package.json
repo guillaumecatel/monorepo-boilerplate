@@ -6,6 +6,9 @@
   "exports": {
     ".": "./src/index.ts"
   },
+  "scripts": {
+    "clean": "shx rm -rf node_modules"
+  },
   "peerDependencies": {
     "eslint": "^9.39.2"
   },

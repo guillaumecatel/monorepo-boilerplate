@@ -37,16 +37,12 @@
     "test:apps": "turbo test --filter=./apps/**",
     "test:examples": "turbo test --filter=./examples/**",
     "test:packages": "turbo test --filter=./packages/**",
-    "test:e2e": "turbo test:e2e",
-    "test:unit": "turbo test:unit",
+    "e2e": "turbo e2e --filter=!./examples/**",
+    "e2e:apps": "turbo e2e --filter=./apps/**",
+    "e2e:examples": "turbo e2e --filter=./examples/**",
+    "e2e:packages": "turbo e2e --filter=./packages/**",
     "typecheck": "turbo typecheck",
-    "version": "changeset version",
-    "gen:app-astro-react": "turbo gen app-astro-react",
-    "gen:app-payload-cms": "turbo gen app-payload-cms",
-    "gen:app-storybook-react": "turbo gen app-storybook-react",
-    "gen:package-assets": "turbo gen package-assets",
-    "gen:package-react": "turbo gen package-react",
-    "gen:package-typescript": "turbo gen package-typescript"
+    "version": "changeset version"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.8",

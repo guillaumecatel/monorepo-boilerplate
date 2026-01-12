@@ -1,19 +1,21 @@
 {
-  "name": "@resona/eslint-config-astro",
+  "name": "@resona/eslint-config-storybook",
   "version": "1.0.0",
   "type": "module",
   "private": true,
   "exports": {
     ".": "./src/index.ts"
   },
+  "scripts": {
+    "clean": "shx rm -rf node_modules"
+  },
   "peerDependencies": {
     "eslint": "^9.39.2"
   },
   "dependencies": {
     "@resona/eslint-config": "workspace:*",
-    "@typescript-eslint/parser": "8.52.0",
-    "eslint-plugin-astro": "1.5.0",
-    "eslint-plugin-jsx-a11y": "6.10.2"
+    "@resona/eslint-config-react": "workspace:*",
+    "eslint-plugin-storybook": "10.1.11"
   },
   "devDependencies": {
     "eslint": "9.39.2"

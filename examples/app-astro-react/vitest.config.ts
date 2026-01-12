@@ -5,7 +5,7 @@ export default getViteConfig({
   // @ts-expect-error: Missing types for Vitest config in Astro's getViteConfig
   test: {
     globals: true,
-    setupFiles: ['tests/setup.ts'],
+    setupFiles: ['tests/integration/setup.ts'],
     typecheck: {
       tsconfig: 'tsconfig.test.json',
     },

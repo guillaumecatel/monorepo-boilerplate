@@ -7,11 +7,11 @@ export default defineConfig({
   test: {
     globals: true,
     environment: 'jsdom',
-    setupFiles: ['tests/setup.ts'],
+    setupFiles: ['tests/integration/setup.ts'],
     typecheck: {
       tsconfig: 'tsconfig.test.json',
     },
-    include: ['tests/int/**/*.test.ts'],
+    include: ['tests/integration/**/*.test.ts'],
   },
   resolve: {
     alias: {

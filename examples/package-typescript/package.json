@@ -16,9 +16,9 @@
     "./dist"
   ],
   "exports": {
+    ".": "./src/index.ts",
     "./alias": "./src/alias.ts",
-    "./guards": "./src/guards.ts",
-    ".": "./src/index.ts"
+    "./guards": "./src/guards.ts"
   },
   "publishConfig": {
     "exports": {
@@ -41,17 +41,17 @@
   },
   "scripts": {
     "build": "tsdown",
-    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage}",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,tsconfig.tsbuildinfo}",
     "dev": "tsdown --watch",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "test": "vitest run --coverage",
+    "test": "vitest --coverage",
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
     "@resona/eslint-config": "workspace:*",
     "@resona/typescript-config": "workspace:*",
-    "@vitest/coverage-v8": "4.0.16",
+    "@vitest/coverage-v8": "4.0.17",
     "tsdown": "0.18.4",
     "typescript": "5.9.3",
     "vitest": "4.0.16"
