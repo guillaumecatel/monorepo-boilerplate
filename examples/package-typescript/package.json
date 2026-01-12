@@ -23,11 +23,6 @@
   },
   "publishConfig": {
     "exports": {
-      "./intl": {
-        "import": "./dist/intl.js",
-        "require": "./dist/intl.cjs",
-        "types": "./dist/intl.d.ts"
-      },
       "./alias": {
         "import": "./dist/alias.js",
         "require": "./dist/alias.cjs",
@@ -38,10 +33,15 @@
         "require": "./dist/guards.cjs",
         "types": "./dist/guards.d.ts"
       },
+      "./intl": {
+        "import": "./dist/intl.js",
+        "require": "./dist/intl.cjs",
+        "types": "./dist/intl.d.ts"
+      },
       ".": {
-        "import": "./dist/index.js",
-        "require": "./dist/index.cjs",
-        "types": "./dist/index.d.ts"
+        "import": "./dist/*.js",
+        "require": "./dist/*.cjs",
+        "types": "./dist/*.d.ts"
       }
     }
   },
@@ -57,7 +57,7 @@
   "devDependencies": {
     "@resona/eslint-config": "workspace:*",
     "@resona/typescript-config": "workspace:*",
-    "@vitest/coverage-v8": "4.0.16",
+    "@vitest/coverage-v8": "4.0.17",
     "tsdown": "0.18.4",
     "typescript": "5.9.3",
     "vitest": "4.0.16"

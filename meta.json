@@ -1,0 +1,11 @@
+{
+  "orgName": "resona",
+  "repository": {
+    "url": "https://github.com/resona/resona",
+    "type": "git"
+  },
+  "owner": {
+    "name": "Resona Team",
+    "email": "dev@resona.art"
+  }
+}
