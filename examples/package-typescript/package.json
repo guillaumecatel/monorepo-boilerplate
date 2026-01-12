@@ -16,10 +16,9 @@
     "./dist"
   ],
   "exports": {
-    ".": "./src/index.ts",
     "./alias": "./src/alias.ts",
     "./guards": "./src/guards.ts",
-    "./intl": "./src/intl.ts"
+    ".": "./src/index.ts"
   },
   "publishConfig": {
     "exports": {
@@ -32,11 +31,6 @@
         "import": "./dist/guards.js",
         "require": "./dist/guards.cjs",
         "types": "./dist/guards.d.ts"
-      },
-      "./intl": {
-        "import": "./dist/intl.js",
-        "require": "./dist/intl.cjs",
-        "types": "./dist/intl.d.ts"
       },
       ".": {
         "import": "./dist/*.js",
@@ -57,7 +51,7 @@
   "devDependencies": {
     "@resona/eslint-config": "workspace:*",
     "@resona/typescript-config": "workspace:*",
-    "@vitest/coverage-v8": "4.0.17",
+    "@vitest/coverage-v8": "4.0.16",
     "tsdown": "0.18.4",
     "typescript": "5.9.3",
     "vitest": "4.0.16"
