@@ -64,7 +64,7 @@ jobs:
         run: pnpm typecheck
 
       - name: 🧪 Unit tests
-        run: pnpm test --filter='!payload-cms' -- --coverage
+        run: pnpm test
 
       - name: 🏗️ Build
         run: pnpm build
