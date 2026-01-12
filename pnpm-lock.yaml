@@ -22,7 +22,7 @@ importers:
       '@commitlint/config-conventional':
         specifier: 20.3.0
         version: 20.3.0
-      '@guillaumecatel/eslint-config-all':
+      '@resona/eslint-config-all':
         specifier: workspace:*
         version: link:packages/eslint-config-all
       '@turbo/gen':
@@ -71,7 +71,74 @@ importers:
         specifier: 4.0.16
         version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
 
-  apps/saas/cms:
+  examples/app-astro-react:
+    dependencies:
+      compression:
+        specifier: 1.8.1
+        version: 1.8.1
+      express:
+        specifier: 5.2.1
+        version: 5.2.1
+      helmet:
+        specifier: 8.1.0
+        version: 8.1.0
+      permissions-policy:
+        specifier: 0.6.0
+        version: 0.6.0
+    devDependencies:
+      '@astrojs/check':
+        specifier: 0.9.6
+        version: 0.9.6(prettier-plugin-astro@0.14.1)(prettier@3.7.4)(typescript@5.9.3)
+      '@astrojs/node':
+        specifier: 9.5.1
+        version: 9.5.1(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2))
+      '@inlang/paraglide-js':
+        specifier: 2.7.1
+        version: 2.7.1(babel-plugin-macros@3.1.0)
+      '@playform/compress':
+        specifier: 0.2.0
+        version: 0.2.0(@types/node@25.0.3)(jiti@2.6.1)(rollup@4.55.1)(sass@1.77.4)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2)
+      '@resona/eslint-config-astro':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config-astro
+      '@resona/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss-config
+      '@resona/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@tailwindcss/vite':
+        specifier: 4.1.18
+        version: 4.1.18(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
+      '@types/compression':
+        specifier: 1.8.1
+        version: 1.8.1
+      '@types/express':
+        specifier: 5.0.6
+        version: 5.0.6
+      '@vitest/coverage-v8':
+        specifier: 4.0.16
+        version: 4.0.16(@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
+      astro:
+        specifier: 5.16.6
+        version: 5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2)
+      astro-capo:
+        specifier: 0.0.1
+        version: 0.0.1(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2))
+      astro-compressor:
+        specifier: 1.2.0
+        version: 1.2.0
+      tailwindcss:
+        specifier: 4.1.18
+        version: 4.1.18
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: 4.0.16
+        version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
+
+  examples/app-payload-cms:
     dependencies:
       '@payloadcms/db-postgres':
         specifier: 3.69.0
@@ -110,21 +177,21 @@ importers:
         specifier: 0.34.5
         version: 0.34.5
     devDependencies:
-      '@guillaumecatel/eslint-config-next':
-        specifier: workspace:*
-        version: link:../../../packages/eslint-config-next
-      '@guillaumecatel/tailwind-config':
-        specifier: workspace:*
-        version: link:../../../packages/tailwind-config
-      '@guillaumecatel/typescript-config':
-        specifier: workspace:*
-        version: link:../../../packages/typescript-config
       '@inlang/paraglide-js':
         specifier: 2.7.1
         version: 2.7.1(babel-plugin-macros@3.1.0)
       '@playwright/test':
         specifier: 1.57.0
         version: 1.57.0
+      '@resona/eslint-config-next':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config-next
+      '@resona/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss-config
+      '@resona/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@testing-library/react':
         specifier: 16.3.1
         version: 16.3.1(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
@@ -159,7 +226,7 @@ importers:
         specifier: 4.0.16
         version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
 
-  apps/saas/design-system:
+  examples/app-storybook-react:
     dependencies:
       express:
         specifier: 5.2.1
@@ -171,18 +238,18 @@ importers:
         specifier: 19.2.3
         version: 19.2.3(react@19.2.3)
     devDependencies:
-      '@guillaumecatel/eslint-config-storybook':
-        specifier: workspace:*
-        version: link:../../../packages/eslint-config-storybook
-      '@guillaumecatel/tailwind-config':
-        specifier: workspace:*
-        version: link:../../../packages/tailwind-config
-      '@guillaumecatel/typescript-config':
-        specifier: workspace:*
-        version: link:../../../packages/typescript-config
       '@inlang/paraglide-js':
         specifier: 2.7.1
         version: 2.7.1(babel-plugin-macros@3.1.0)
+      '@resona/eslint-config-storybook':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config-storybook
+      '@resona/tailwindcss-config':
+        specifier: workspace:*
+        version: link:../../packages/tailwindcss-config
+      '@resona/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
       '@storybook/addon-a11y':
         specifier: 10.1.11
         version: 10.1.11(storybook@10.1.11(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))
@@ -235,66 +302,75 @@ importers:
         specifier: 4.0.16
         version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
 
-  apps/saas/website:
-    dependencies:
-      compression:
-        specifier: 1.8.1
-        version: 1.8.1
-      express:
-        specifier: 5.2.1
-        version: 5.2.1
-      helmet:
-        specifier: 8.1.0
-        version: 8.1.0
-      permissions-policy:
-        specifier: 0.6.0
-        version: 0.6.0
+  examples/package-assets:
     devDependencies:
-      '@astrojs/check':
-        specifier: 0.9.6
-        version: 0.9.6(prettier-plugin-astro@0.14.1)(prettier@3.7.4)(typescript@5.9.3)
-      '@astrojs/node':
-        specifier: 9.5.1
-        version: 9.5.1(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2))
-      '@guillaumecatel/eslint-config-astro':
+      '@resona/eslint-config':
         specifier: workspace:*
-        version: link:../../../packages/eslint-config-astro
-      '@guillaumecatel/tailwind-config':
+        version: link:../../packages/eslint-config
+      '@resona/typescript-config':
         specifier: workspace:*
-        version: link:../../../packages/tailwind-config
-      '@guillaumecatel/typescript-config':
+        version: link:../../packages/typescript-config
+      nodemon:
+        specifier: 3.1.11
+        version: 3.1.11
+
+  examples/package-react:
+    dependencies:
+      react:
+        specifier: '>=19'
+        version: 19.2.3
+      react-dom:
+        specifier: '>=19'
+        version: 19.2.3(react@19.2.3)
+    devDependencies:
+      '@resona/eslint-config-react':
         specifier: workspace:*
-        version: link:../../../packages/typescript-config
-      '@inlang/paraglide-js':
-        specifier: 2.7.1
-        version: 2.7.1(babel-plugin-macros@3.1.0)
-      '@playform/compress':
-        specifier: 0.2.0
-        version: 0.2.0(@types/node@25.0.3)(jiti@2.6.1)(rollup@4.55.1)(sass@1.77.4)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2)
-      '@tailwindcss/vite':
-        specifier: 4.1.18
-        version: 4.1.18(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
-      '@types/compression':
-        specifier: 1.8.1
-        version: 1.8.1
-      '@types/express':
-        specifier: 5.0.6
-        version: 5.0.6
+        version: link:../../packages/eslint-config-react
+      '@resona/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@testing-library/jest-dom':
+        specifier: 6.9.1
+        version: 6.9.1
+      '@testing-library/react':
+        specifier: 16.3.1
+        version: 16.3.1(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
+      '@types/react':
+        specifier: 19.2.7
+        version: 19.2.7
+      '@types/react-dom':
+        specifier: 19.2.3
+        version: 19.2.3(@types/react@19.2.7)
       '@vitest/coverage-v8':
         specifier: 4.0.16
-        version: 4.0.16(@vitest/browser@4.0.16(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
-      astro:
-        specifier: 5.16.6
-        version: 5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2)
-      astro-capo:
-        specifier: 0.0.1
-        version: 0.0.1(astro@5.16.6(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(rollup@4.55.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(typescript@5.9.3)(yaml@2.8.2))
-      astro-compressor:
-        specifier: 1.2.0
-        version: 1.2.0
-      tailwindcss:
-        specifier: 4.1.18
-        version: 4.1.18
+        version: 4.0.16(@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
+      jsdom:
+        specifier: 27.4.0
+        version: 27.4.0
+      tsdown:
+        specifier: 0.18.4
+        version: 0.18.4(oxc-resolver@11.16.2)(synckit@0.11.11)(typescript@5.9.3)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      vitest:
+        specifier: 4.0.16
+        version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
+
+  examples/package-typescript:
+    devDependencies:
+      '@resona/eslint-config':
+        specifier: workspace:*
+        version: link:../../packages/eslint-config
+      '@resona/typescript-config':
+        specifier: workspace:*
+        version: link:../../packages/typescript-config
+      '@vitest/coverage-v8':
+        specifier: 4.0.16
+        version: 4.0.16(@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
+      tsdown:
+        specifier: 0.18.4
+        version: 0.18.4(oxc-resolver@11.16.2)(synckit@0.11.11)(typescript@5.9.3)
       typescript:
         specifier: 5.9.3
         version: 5.9.3
@@ -332,19 +408,19 @@ importers:
 
   packages/eslint-config-all:
     dependencies:
-      '@guillaumecatel/eslint-config':
+      '@resona/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@guillaumecatel/eslint-config-astro':
+      '@resona/eslint-config-astro':
         specifier: workspace:*
         version: link:../eslint-config-astro
-      '@guillaumecatel/eslint-config-next':
+      '@resona/eslint-config-next':
         specifier: workspace:*
         version: link:../eslint-config-next
-      '@guillaumecatel/eslint-config-react':
+      '@resona/eslint-config-react':
         specifier: workspace:*
         version: link:../eslint-config-react
-      '@guillaumecatel/eslint-config-storybook':
+      '@resona/eslint-config-storybook':
         specifier: workspace:*
         version: link:../eslint-config-storybook
     devDependencies:
@@ -354,7 +430,7 @@ importers:
 
   packages/eslint-config-astro:
     dependencies:
-      '@guillaumecatel/eslint-config':
+      '@resona/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       '@typescript-eslint/parser':
@@ -373,10 +449,10 @@ importers:
 
   packages/eslint-config-next:
     dependencies:
-      '@guillaumecatel/eslint-config':
+      '@resona/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@guillaumecatel/eslint-config-react':
+      '@resona/eslint-config-react':
         specifier: workspace:*
         version: link:../eslint-config-react
     devDependencies:
@@ -386,7 +462,7 @@ importers:
 
   packages/eslint-config-react:
     dependencies:
-      '@guillaumecatel/eslint-config':
+      '@resona/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
       eslint-plugin-react:
@@ -399,10 +475,10 @@ importers:
 
   packages/eslint-config-storybook:
     dependencies:
-      '@guillaumecatel/eslint-config':
+      '@resona/eslint-config':
         specifier: workspace:*
         version: link:../eslint-config
-      '@guillaumecatel/eslint-config-react':
+      '@resona/eslint-config-react':
         specifier: workspace:*
         version: link:../eslint-config-react
       eslint-plugin-storybook:
@@ -413,89 +489,13 @@ importers:
         specifier: 9.39.2
         version: 9.39.2(jiti@2.6.1)
 
-  packages/fonts:
-    devDependencies:
-      '@guillaumecatel/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@guillaumecatel/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      nodemon:
-        specifier: 3.1.11
-        version: 3.1.11
-
-  packages/tailwind-config:
+  packages/tailwindcss-config:
     dependencies:
       tailwindcss:
         specifier: ^4.1.18
         version: 4.1.18
 
   packages/typescript-config: {}
-
-  packages/ui:
-    dependencies:
-      react:
-        specifier: '>=19'
-        version: 19.2.3
-      react-dom:
-        specifier: '>=19'
-        version: 19.2.3(react@19.2.3)
-    devDependencies:
-      '@guillaumecatel/eslint-config-react':
-        specifier: workspace:*
-        version: link:../eslint-config-react
-      '@guillaumecatel/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@testing-library/jest-dom':
-        specifier: 6.9.1
-        version: 6.9.1
-      '@testing-library/react':
-        specifier: 16.3.1
-        version: 16.3.1(@testing-library/dom@10.4.1)(@types/react-dom@19.2.3(@types/react@19.2.7))(@types/react@19.2.7)(react-dom@19.2.3(react@19.2.3))(react@19.2.3)
-      '@types/react':
-        specifier: 19.2.7
-        version: 19.2.7
-      '@types/react-dom':
-        specifier: 19.2.3
-        version: 19.2.3(@types/react@19.2.7)
-      '@vitest/coverage-v8':
-        specifier: 4.0.16
-        version: 4.0.16(@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
-      jsdom:
-        specifier: 27.4.0
-        version: 27.4.0
-      tsdown:
-        specifier: 0.18.4
-        version: 0.18.4(oxc-resolver@11.16.2)(synckit@0.11.11)(typescript@5.9.3)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
-      vitest:
-        specifier: 4.0.16
-        version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
-
-  packages/utils:
-    devDependencies:
-      '@guillaumecatel/eslint-config':
-        specifier: workspace:*
-        version: link:../eslint-config
-      '@guillaumecatel/typescript-config':
-        specifier: workspace:*
-        version: link:../typescript-config
-      '@vitest/coverage-v8':
-        specifier: 4.0.16
-        version: 4.0.16(@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
-      tsdown:
-        specifier: 0.18.4
-        version: 0.18.4(oxc-resolver@11.16.2)(synckit@0.11.11)(typescript@5.9.3)
-      typescript:
-        specifier: 5.9.3
-        version: 5.9.3
-      vitest:
-        specifier: 4.0.16
-        version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
 
 packages:
 
@@ -8793,7 +8793,7 @@ snapshots:
 
   '@esbuild-kit/core-utils@3.3.2':
     dependencies:
-      esbuild: 0.25.12
+      esbuild: 0.27.2
       source-map-support: 0.5.21
 
   '@esbuild-kit/esm-loader@2.6.5':
@@ -10312,13 +10312,6 @@ snapshots:
       '@tailwindcss/oxide-win32-arm64-msvc': 4.1.18
       '@tailwindcss/oxide-win32-x64-msvc': 4.1.18
 
-  '@tailwindcss/vite@4.1.18(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
-    dependencies:
-      '@tailwindcss/node': 4.1.18
-      '@tailwindcss/oxide': 4.1.18
-      tailwindcss: 4.1.18
-      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
-
   '@tailwindcss/vite@4.1.18(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
     dependencies:
       '@tailwindcss/node': 4.1.18
@@ -10534,7 +10527,7 @@ snapshots:
 
   '@types/minimatch@6.0.0':
     dependencies:
-      minimatch: 9.0.0
+      minimatch: 10.1.1
 
   '@types/ms@2.1.0': {}
 
@@ -10770,24 +10763,6 @@ snapshots:
     transitivePeerDependencies:
       - supports-color
 
-  '@vitest/browser@4.0.16(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
-    dependencies:
-      '@vitest/mocker': 4.0.16(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
-      '@vitest/utils': 4.0.16
-      magic-string: 0.30.21
-      pixelmatch: 7.1.0
-      pngjs: 7.0.0
-      sirv: 3.0.2
-      tinyrainbow: 3.0.3
-      vitest: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
-      ws: 8.19.0
-    transitivePeerDependencies:
-      - bufferutil
-      - msw
-      - utf-8-validate
-      - vite
-    optional: true
-
   '@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
     dependencies:
       '@vitest/mocker': 4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
@@ -10804,25 +10779,6 @@ snapshots:
       - msw
       - utf-8-validate
       - vite
-
-  '@vitest/coverage-v8@4.0.16(@vitest/browser@4.0.16(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
-    dependencies:
-      '@bcoe/v8-coverage': 1.0.2
-      '@vitest/utils': 4.0.16
-      ast-v8-to-istanbul: 0.3.10
-      istanbul-lib-coverage: 3.2.2
-      istanbul-lib-report: 3.0.1
-      istanbul-lib-source-maps: 5.0.6
-      istanbul-reports: 3.2.0
-      magicast: 0.5.1
-      obug: 2.1.1
-      std-env: 3.10.0
-      tinyrainbow: 3.0.3
-      vitest: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
-    optionalDependencies:
-      '@vitest/browser': 4.0.16(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
-    transitivePeerDependencies:
-      - supports-color
 
   '@vitest/coverage-v8@4.0.16(@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
     dependencies:
@@ -10867,15 +10823,6 @@ snapshots:
       magic-string: 0.30.21
     optionalDependencies:
       vite: 7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
-
-  '@vitest/mocker@4.0.16(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
-    dependencies:
-      '@vitest/spy': 4.0.16
-      estree-walker: 3.0.3
-      magic-string: 0.30.21
-    optionalDependencies:
-      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
-    optional: true
 
   '@vitest/mocker@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))':
     dependencies:
@@ -11239,7 +11186,7 @@ snapshots:
       unstorage: 1.17.3
       vfile: 6.0.3
       vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
-      vitefu: 1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
+      vitefu: 1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2))
       xxhash-wasm: 1.1.0
       yargs-parser: 21.1.1
       yocto-spinner: 0.2.3
@@ -16183,7 +16130,7 @@ snapshots:
   tsx@4.20.3:
     dependencies:
       esbuild: 0.25.12
-      get-tsconfig: 4.8.1
+      get-tsconfig: 4.13.0
     optionalDependencies:
       fsevents: 2.3.3
 
@@ -16559,6 +16506,10 @@ snapshots:
       terser: 5.42.0
       tsx: 4.20.6
       yaml: 2.8.2
+
+  vitefu@1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)):
+    optionalDependencies:
+      vite: 6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.1)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)
 
   vitefu@1.1.1(vite@6.4.1(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.42.0)(tsx@4.20.6)(yaml@2.8.2)):
     optionalDependencies:

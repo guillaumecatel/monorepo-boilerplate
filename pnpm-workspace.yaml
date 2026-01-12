@@ -1,5 +1,6 @@
 packages:
-  - apps/saas/*
+  - apps/*
+  - examples/*
   - packages/*
 
 autoInstallPeers: true

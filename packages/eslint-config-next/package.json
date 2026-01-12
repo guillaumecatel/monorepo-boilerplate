@@ -1,5 +1,5 @@
 {
-  "name": "@guillaumecatel/eslint-config-next",
+  "name": "@resona/eslint-config-next",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -10,8 +10,8 @@
     "eslint": "^9.39.2"
   },
   "dependencies": {
-    "@guillaumecatel/eslint-config": "workspace:*",
-    "@guillaumecatel/eslint-config-react": "workspace:*"
+    "@resona/eslint-config": "workspace:*",
+    "@resona/eslint-config-react": "workspace:*"
   },
   "devDependencies": {
     "eslint": "9.39.2"

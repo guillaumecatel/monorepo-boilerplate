@@ -1,5 +1,5 @@
 {
-  "name": "@guillaumecatel/eslint-config",
+  "name": "@resona/eslint-config",
   "version": "1.0.0",
   "type": "module",
   "private": true,

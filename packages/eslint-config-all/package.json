@@ -1,5 +1,5 @@
 {
-  "name": "@guillaumecatel/eslint-config-all",
+  "name": "@resona/eslint-config-all",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -10,11 +10,11 @@
     "eslint": "^9.39.2"
   },
   "dependencies": {
-    "@guillaumecatel/eslint-config": "workspace:*",
-    "@guillaumecatel/eslint-config-astro": "workspace:*",
-    "@guillaumecatel/eslint-config-next": "workspace:*",
-    "@guillaumecatel/eslint-config-react": "workspace:*",
-    "@guillaumecatel/eslint-config-storybook": "workspace:*"
+    "@resona/eslint-config": "workspace:*",
+    "@resona/eslint-config-astro": "workspace:*",
+    "@resona/eslint-config-next": "workspace:*",
+    "@resona/eslint-config-react": "workspace:*",
+    "@resona/eslint-config-storybook": "workspace:*"
   },
   "devDependencies": {
     "eslint": "9.39.2"

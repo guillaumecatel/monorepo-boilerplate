@@ -1,8 +1,8 @@
-import base from '@guillaumecatel/eslint-config'
-import astro from '@guillaumecatel/eslint-config-astro'
-import next from '@guillaumecatel/eslint-config-next'
-import react from '@guillaumecatel/eslint-config-react'
-import storybook from '@guillaumecatel/eslint-config-storybook'
+import base from '@resona/eslint-config'
+import astro from '@resona/eslint-config-astro'
+import next from '@resona/eslint-config-next'
+import react from '@resona/eslint-config-react'
+import storybook from '@resona/eslint-config-storybook'
 
 /**
  * Complete ESLint configuration for root workspace

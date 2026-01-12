@@ -1,5 +1,5 @@
 {
-  "name": "@guillaumecatel/eslint-config-react",
+  "name": "@resona/eslint-config-react",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -10,7 +10,7 @@
     "eslint": "^9.39.2"
   },
   "dependencies": {
-    "@guillaumecatel/eslint-config": "workspace:*",
+    "@resona/eslint-config": "workspace:*",
     "eslint-plugin-react": "7.37.5"
   },
   "devDependencies": {

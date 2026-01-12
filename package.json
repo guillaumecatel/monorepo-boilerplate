@@ -1,9 +1,9 @@
 {
-  "name": "monorepo",
-  "description": "",
+  "name": "resona",
+  "description": "Donner vie aux signaux et aux formes",
   "type": "module",
   "private": true,
-  "author": "Guillaume CATEL <hello@guillaumecatel.com> (http://github.com/guillaumecatel)",
+  "author": "Resona Team <dev@resona.art> (https://resona.art)",
   "packageManager": "pnpm@10.0.0",
   "engineStrict": true,
   "engines": {
@@ -37,13 +37,19 @@
     "test:e2e": "turbo test:e2e",
     "test:unit": "turbo test:unit",
     "typecheck": "turbo typecheck",
-    "version": "changeset version"
+    "version": "changeset version",
+    "gen:app-astro": "turbo gen workspace --copy=examples/app-astro-react --destination=apps --type=app",
+    "gen:app-payload": "turbo gen workspace --copy=examples/app-payload-cms --destination=apps --type=app",
+    "gen:app-storybook": "turbo gen workspace --copy=examples/app-storybook-react --destination=apps --type=app",
+    "gen:pkg-assets": "turbo gen workspace --copy=examples/package-assets --destination=packages --type=package",
+    "gen:pkg-react": "turbo gen workspace --copy=examples/package-react --destination=packages --type=package",
+    "gen:pkg-typescript": "turbo gen workspace --copy=examples/package-typescript --destination=packages --type=package"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.8",
     "@commitlint/cli": "20.3.0",
     "@commitlint/config-conventional": "20.3.0",
-    "@guillaumecatel/eslint-config-all": "workspace:*",
+    "@resona/eslint-config-all": "workspace:*",
     "@turbo/gen": "2.7.2",
     "@types/node": "25.0.3",
     "eslint": "9.39.2",

@@ -1,0 +1,3 @@
+{
+  "extends": "@resona/typescript-config/base"
+}
