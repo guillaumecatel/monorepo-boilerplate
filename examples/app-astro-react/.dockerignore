@@ -1,0 +1,12 @@
+node_modules
+npm-debug.log
+.turbo
+dist
+coverage
+.astro
+tsconfig.tsbuildinfo
+.next
+.cache
+playwright-report
+test-results
+.env*.local
