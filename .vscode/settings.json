@@ -21,10 +21,6 @@
     "json5",
     "markdown"
   ],
-  "eslint.workingDirectories": [
-    { "pattern": "./apps/*/" },
-    { "pattern": "./packages/*/" }
-  ],
 
   "tailwindCSS.classFunctions": ["cva", "cx"]
 }
