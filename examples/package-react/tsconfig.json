@@ -1,5 +1,5 @@
 {
-  "extends": "@resona/typescript-config/react",
+  "extends": "typescript-config/react",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

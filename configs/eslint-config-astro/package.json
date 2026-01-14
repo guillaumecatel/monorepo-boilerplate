@@ -1,5 +1,5 @@
 {
-  "name": "@resona/eslint-config-astro",
+  "name": "eslint-config-astro",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -13,8 +13,8 @@
     "eslint": "^9.39.2"
   },
   "dependencies": {
-    "@resona/eslint-config": "workspace:*",
     "@typescript-eslint/parser": "8.52.0",
+    "eslint-config": "workspace:*",
     "eslint-plugin-astro": "1.5.0",
     "eslint-plugin-jsx-a11y": "6.10.2"
   },

@@ -1,3 +1,3 @@
-import react from '@resona/eslint-config-react'
+import react from 'eslint-config-react'
 
 export default react

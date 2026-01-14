@@ -58,7 +58,7 @@ pnpm install
 ## 🚀 Quickstart
 
 ```bash
-pnpm add @resona/font-package
+pnpm add @myorg/font-package
 ```
 
 ## 🗂️ Project Structure
@@ -81,15 +81,15 @@ pnpm add @resona/font-package
 ```css
 @font-face {
   font-family: 'Inter';
-  src: url('@resona/font-package/inter-regular.woff2') format('woff2');
+  src: url('@myorg/font-package/inter-regular.woff2') format('woff2');
 }
 ```
 
 ### In TypeScript
 
 ```typescript
-import interWoff2 from '@resona/font-package/inter-regular.woff2'
-import interTtf from '@resona/font-package/inter-regular.ttf'
+import interWoff2 from '@myorg/font-package/inter-regular.woff2'
+import interTtf from '@myorg/font-package/inter-regular.ttf'
 ```
 
 ## 📑 TypeScript Typings

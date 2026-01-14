@@ -15,7 +15,6 @@
     "typecheck": "astro check"
   },
   "dependencies": {
-    "@resona/types": "workspace:*",
     "compression": "1.8.1",
     "express": "5.2.1",
     "helmet": "8.1.0",
@@ -30,9 +29,6 @@
     "@inlang/paraglide-js": "2.8.0",
     "@playform/compress": "0.2.1",
     "@playwright/test": "1.57.0",
-    "@resona/eslint-config-astro": "workspace:*",
-    "@resona/tailwindcss-config": "workspace:*",
-    "@resona/typescript-config": "workspace:*",
     "@tailwindcss/vite": "4.1.18",
     "@types/compression": "1.8.1",
     "@types/express": "5.0.6",
@@ -43,8 +39,11 @@
     "astro": "5.16.9",
     "astro-capo": "0.0.1",
     "astro-compressor": "1.2.0",
+    "eslint-config-astro": "workspace:*",
     "tailwindcss": "4.1.18",
+    "tailwindcss-config": "workspace:*",
     "typescript": "5.9.3",
+    "typescript-config": "workspace:*",
     "vitest": "4.0.16"
   }
 }

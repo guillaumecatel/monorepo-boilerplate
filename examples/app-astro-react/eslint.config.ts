@@ -1,3 +1,3 @@
-import astro from '@resona/eslint-config-astro'
+import astro from 'eslint-config-astro'
 
 export default astro

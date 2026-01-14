@@ -1,3 +1,3 @@
-import storybook from '@resona/eslint-config-storybook'
+import storybook from 'eslint-config-storybook'
 
 export default storybook

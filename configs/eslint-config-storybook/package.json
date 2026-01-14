@@ -1,5 +1,5 @@
 {
-  "name": "@resona/eslint-config-storybook",
+  "name": "eslint-config-storybook",
   "version": "1.0.0",
   "type": "module",
   "private": true,
@@ -13,8 +13,8 @@
     "eslint": "^9.39.2"
   },
   "dependencies": {
-    "@resona/eslint-config": "workspace:*",
-    "@resona/eslint-config-react": "workspace:*",
+    "eslint-config": "workspace:*",
+    "eslint-config-react": "workspace:*",
     "eslint-plugin-storybook": "10.1.11"
   },
   "devDependencies": {

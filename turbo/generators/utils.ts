@@ -1,3 +1,4 @@
+import { execSync } from 'node:child_process'
 import {
   cpSync,
   existsSync,
@@ -7,7 +8,7 @@ import {
   readFileSync,
   writeFileSync,
 } from 'node:fs'
-import { basename, join, resolve } from 'node:path'
+import { basename, dirname, join, resolve } from 'node:path'
 
 export interface GeneratorAnswers {
   name: string
@@ -48,13 +49,19 @@ function copyRecursive(src: string, dest: string): void {
   }
 
   if (stat.isDirectory()) {
-    if (!existsSync(dest)) {
-      mkdirSync(dest, { recursive: true })
+    // Renommer __generators__ en generators lors de la copie
+    let finalDest = dest
+    if (name === '__generators__') {
+      finalDest = join(dirname(dest), 'generators')
+    }
+
+    if (!existsSync(finalDest)) {
+      mkdirSync(finalDest, { recursive: true })
     }
 
     const entries = readdirSync(src)
     for (const entry of entries) {
-      copyRecursive(join(src, entry), join(dest, entry))
+      copyRecursive(join(src, entry), join(finalDest, entry))
     }
   } else {
     cpSync(src, dest)
@@ -105,9 +112,9 @@ function appendDockerStage(
   const cleanBuildTemplate = buildTemplate.split('\n').slice(3).join('\n')
   const cleanRuntimeTemplate = runtimeTemplate.split('\n').slice(3).join('\n')
 
-  // Remplacer les placeholders et ajouter un commentaire d'identification
-  const buildStage = `\n# ${appName} --> build\n${cleanBuildTemplate.replaceAll('APP_NAME', appName)}\n`
-  const runtimeStage = `\n# ${appName} --> runtime\n${cleanRuntimeTemplate.replaceAll('APP_NAME', appName).replaceAll('8888', port.toString())}\n`
+  // Remplacer les placeholders et ajouter les commentaires start/end
+  const buildStage = `\n# start ${appName} --> build\n${cleanBuildTemplate.replaceAll('APP_NAME', appName)}\n# end ${appName} --> build\n`
+  const runtimeStage = `\n# start ${appName} --> runtime\n${cleanRuntimeTemplate.replaceAll('APP_NAME', appName).replaceAll('8888', port.toString())}\n# end ${appName} --> runtime\n`
 
   // Insérer le build stage
   const buildMarker = '# === AUTO-GENERATED BUILD STAGES BELOW ==='
@@ -147,6 +154,42 @@ function appendDockerStage(
   writeFileSync(dockerfilePath, newDockerfile)
 }
 
+export function removeDockerStage(appName: string): void {
+  const dockerfilePath = resolve(process.cwd(), 'Dockerfile')
+  let dockerfile = readFileSync(dockerfilePath, 'utf-8')
+
+  // Supprimer le build stage
+  const buildStartMarker = `# start ${appName} --> build`
+  const buildEndMarker = `# end ${appName} --> build`
+  const buildStartIndex = dockerfile.indexOf(buildStartMarker)
+  if (buildStartIndex !== -1) {
+    const buildEndIndex = dockerfile.indexOf(buildEndMarker, buildStartIndex)
+    if (buildEndIndex !== -1) {
+      const endOfLine = dockerfile.indexOf('\n', buildEndIndex) + 1
+      dockerfile =
+        dockerfile.slice(0, buildStartIndex) + dockerfile.slice(endOfLine)
+    }
+  }
+
+  // Supprimer le runtime stage
+  const runtimeStartMarker = `# start ${appName} --> runtime`
+  const runtimeEndMarker = `# end ${appName} --> runtime`
+  const runtimeStartIndex = dockerfile.indexOf(runtimeStartMarker)
+  if (runtimeStartIndex !== -1) {
+    const runtimeEndIndex = dockerfile.indexOf(
+      runtimeEndMarker,
+      runtimeStartIndex,
+    )
+    if (runtimeEndIndex !== -1) {
+      const endOfLine = dockerfile.indexOf('\n', runtimeEndIndex) + 1
+      dockerfile =
+        dockerfile.slice(0, runtimeStartIndex) + dockerfile.slice(endOfLine)
+    }
+  }
+
+  writeFileSync(dockerfilePath, dockerfile)
+}
+
 function getNextAvailablePort(): number {
   const dockerfilePath = resolve(process.cwd(), 'Dockerfile')
   const dockerfile = readFileSync(dockerfilePath, 'utf-8')
@@ -166,6 +209,14 @@ export function createAppAction(exampleName: string) {
     const pkg = JSON.parse(readFileSync(pkgPath, 'utf-8'))
     pkg.name = name
     writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
+
+    // Remplacer APP_NAME dans le générateur de l'app
+    const generatorConfigPath = resolve(dest, 'turbo/generators/config.ts')
+    if (existsSync(generatorConfigPath)) {
+      const generatorContent = readFileSync(generatorConfigPath, 'utf-8')
+      const updatedContent = generatorContent.replace(/APP_NAME/g, name)
+      writeFileSync(generatorConfigPath, updatedContent)
+    }
 
     // Ajouter le stage Docker
     const port = getNextAvailablePort()
@@ -189,6 +240,47 @@ export function createPackageAction(exampleName: string) {
     pkg.author = `${meta.owner.name} <${meta.owner.email}>`
     writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
 
+    // Remplacer le scope dans le générateur du package
+    const generatorConfigPath = resolve(dest, 'turbo/generators/config.ts')
+    if (existsSync(generatorConfigPath)) {
+      const generatorContent = readFileSync(generatorConfigPath, 'utf-8')
+      const updatedContent = generatorContent.replace(
+        /@guillaumecatel/g,
+        `@${meta.orgName}`,
+      )
+      writeFileSync(generatorConfigPath, updatedContent)
+    }
+
     return `Package copié depuis examples/${exampleName} vers packages/${name}`
+  }
+}
+
+export function getAvailableApps(): string[] {
+  const appsDir = resolve(process.cwd(), 'apps')
+  if (!existsSync(appsDir)) return []
+  return readdirSync(appsDir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
+}
+
+export function deleteApp(appName: string): string {
+  const appPath = resolve(process.cwd(), 'apps', appName)
+
+  if (!existsSync(appPath)) {
+    return `L'app "${appName}" n'existe pas`
+  }
+
+  try {
+    // Supprimer les stages Docker
+    removeDockerStage(appName)
+
+    // Supprimer le dossier de l'app avec shx pour la compatibilité cross-platform
+    execSync(`pnpm shx rm -rf "${appPath}"`, {
+      stdio: 'inherit',
+    })
+
+    return `✓ App "${appName}" et ses stages Docker supprimés avec succès`
+  } catch (error) {
+    return `✗ Erreur lors de la suppression: ${error}`
   }
 }

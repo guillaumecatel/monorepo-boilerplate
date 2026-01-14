@@ -61,16 +61,16 @@ pnpm install
 ### Install the package
 
 ```bash
-pnpm add @resona/typescript-package
+pnpm add @myorg/typescript-package
 ```
 
 ## 🚀 Quickstart
 
 ```typescript
-import { isString, isNumber } from '@resona/typescript-package'
+import { isString, isNumber } from '@myorg/typescript-package'
 // or
-import { isString } from '@resona/typescript-package/guards'
-import { kebabCase } from '@resona/typescript-package/alias'
+import { isString } from '@myorg/typescript-package/guards'
+import { kebabCase } from '@myorg/typescript-package/alias'
 
 if (isString(value)) {
   console.log(value.toUpperCase())
@@ -122,7 +122,7 @@ import {
   isBoolean,
   isArray,
   isObject,
-} from '@resona/typescript-package/guards'
+} from '@myorg/typescript-package/guards'
 
 if (isString(value)) {
   // TypeScript knows value is string here
@@ -138,7 +138,7 @@ import {
   Falsy,
   Primitive,
   Nullish,
-} from '@resona/typescript-package/alias'
+} from '@myorg/typescript-package/alias'
 
 type Name = Nullable<string> // string | null
 type Age = Maybe<number> // number | undefined

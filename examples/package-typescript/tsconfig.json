@@ -1,5 +1,5 @@
 {
-  "extends": "@resona/typescript-config/base",
+  "extends": "typescript-config/base",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

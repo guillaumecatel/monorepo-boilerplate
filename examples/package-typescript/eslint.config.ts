@@ -1,3 +1,3 @@
-import base from '@resona/eslint-config'
+import base from 'eslint-config'
 
 export default base

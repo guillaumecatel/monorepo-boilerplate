@@ -1,8 +1,8 @@
-import base from '@resona/eslint-config'
-import astro from '@resona/eslint-config-astro'
-import next from '@resona/eslint-config-next'
-import react from '@resona/eslint-config-react'
-import storybook from '@resona/eslint-config-storybook'
+import base from 'eslint-config'
+import astro from 'eslint-config-astro'
+import next from 'eslint-config-next'
+import react from 'eslint-config-react'
+import storybook from 'eslint-config-storybook'
 
 /**
  * Complete ESLint configuration for root workspace

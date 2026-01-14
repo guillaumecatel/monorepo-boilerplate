@@ -1,5 +1,5 @@
 {
-  "extends": "@resona/typescript-config/astro",
+  "extends": "typescript-config/astro",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

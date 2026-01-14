@@ -1,5 +1,5 @@
 # === RUNTIME STAGE TEMPLATE BELOW ===
-# Do not manually edit below this line - build stages are managed by turbo/generators
+# Do not manually edit below this line - runtime stages are managed by turbo/generators
 
 FROM node:${NODE_VERSION}-alpine AS APP_NAME
 ENV NODE_ENV=production

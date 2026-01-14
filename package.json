@@ -1,9 +1,9 @@
 {
-  "name": "resona",
-  "description": "Donner vie aux signaux et aux formes",
+  "name": "monorepo",
+  "description": "",
   "type": "module",
   "private": true,
-  "author": "Resona Team <dev@resona.art> (https://resona.art)",
+  "author": "",
   "packageManager": "pnpm@10.0.0",
   "engineStrict": true,
   "engines": {
@@ -42,16 +42,17 @@
     "e2e:examples": "turbo e2e --filter=./examples/**",
     "e2e:packages": "turbo e2e --filter=./packages/**",
     "typecheck": "turbo typecheck",
+    "cli": "turbo gen",
     "version": "changeset version"
   },
   "devDependencies": {
     "@changesets/cli": "2.29.8",
     "@commitlint/cli": "20.3.0",
     "@commitlint/config-conventional": "20.3.0",
-    "@resona/eslint-config-all": "workspace:*",
     "@turbo/gen": "2.7.4",
     "@types/node": "25.0.3",
     "eslint": "9.39.2",
+    "eslint-config-all": "workspace:*",
     "husky": "9.1.7",
     "jiti": "2.6.1",
     "knip": "5.78.0",

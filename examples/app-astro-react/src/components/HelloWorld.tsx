@@ -1,4 +1,3 @@
-import { isTruthy } from '@resona/types/guards'
 import { useState, type ChangeEvent } from 'react'
 
 export default function HelloWorld() {
@@ -6,7 +5,7 @@ export default function HelloWorld() {
   const [name, setName] = useState(defaultWorld)
 
   function handleChange(event: ChangeEvent<HTMLInputElement>) {
-    if (isTruthy(event.target.value)) {
+    if (event.target.value !== '') {
       setName(event.target.value)
     } else {
       setName(defaultWorld)

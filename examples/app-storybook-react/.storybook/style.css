@@ -1,10 +1,10 @@
-@import '@resona/tailwindcss-config';
+@import 'tailwindcss-config';
 
 /*
  * Explicitly registering sources
  * Use @source to explicitly register source paths relative to the stylesheet:
  *
- * @source '../node_modules/@resona/ui';
+ * @source '../node_modules/@myorg/ui';
  *
  * This is especially useful when you need to scan an external library that is built with Tailwind,
  * since dependencies are usually listed in your .gitignore file and ignored by Tailwind by default.

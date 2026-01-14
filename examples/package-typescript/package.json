@@ -1,9 +1,9 @@
 {
-  "name": "@resona/example-typescript",
+  "name": "@myorg/example-typescript",
   "description": "Utilities for projects",
   "type": "module",
   "license": "MIT",
-  "author": "Resona <contact@resona.art>",
+  "author": "Resona <contact@myorg.art>",
   "homepage": "https://github.com/electroaudiogram/resona#readme",
   "repository": "electroaudiogram/resona.git",
   "bugs": "https://github.com/electroaudiogram/resona/issues",
@@ -49,11 +49,11 @@
     "typecheck": "tsc --noEmit"
   },
   "devDependencies": {
-    "@resona/eslint-config": "workspace:*",
-    "@resona/typescript-config": "workspace:*",
     "@vitest/coverage-v8": "4.0.17",
+    "eslint-config": "workspace:*",
     "tsdown": "0.18.4",
     "typescript": "5.9.3",
+    "typescript-config": "workspace:*",
     "vitest": "4.0.16"
   }
 }

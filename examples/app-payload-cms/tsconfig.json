@@ -1,5 +1,5 @@
 {
-  "extends": "@resona/typescript-config/next",
+  "extends": "typescript-config/next",
   "compilerOptions": {
     "baseUrl": ".",
     "paths": {

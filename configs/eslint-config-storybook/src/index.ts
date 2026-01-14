@@ -1,5 +1,5 @@
-import base from '@resona/eslint-config'
-import react from '@resona/eslint-config-react'
+import base from 'eslint-config'
+import react from 'eslint-config-react'
 import storybookPlugin from 'eslint-plugin-storybook'
 
 /**

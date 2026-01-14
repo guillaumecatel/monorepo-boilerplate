@@ -1,4 +1,4 @@
-import base from '@resona/eslint-config'
+import base from 'eslint-config'
 import pluginReact from 'eslint-plugin-react'
 
 const GLOB_TS = '**/*.{ts,tsx,cts,mts}'

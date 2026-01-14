@@ -1,11 +1,11 @@
 {
-  "orgName": "resona",
+  "orgName": "myorg",
   "repository": {
-    "url": "https://github.com/resona/resona",
+    "url": "https://github.com/myorg/myorg",
     "type": "git"
   },
   "owner": {
-    "name": "Resona Team",
-    "email": "dev@resona.art"
+    "name": "MyOrg Team",
+    "email": "contact@myorg.com"
   }
 }

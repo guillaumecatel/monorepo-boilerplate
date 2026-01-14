@@ -1,10 +1,10 @@
 {
-  "name": "@resona/example-react",
+  "name": "@myorg/example-react",
   "version": "0.0.1",
   "description": "A React component library package",
   "type": "module",
   "license": "MIT",
-  "author": "Resona <contact@resona.art>",
+  "author": "Resona <contact@myorg.art>",
   "homepage": "https://github.com/electroaudiogram/resona#readme",
   "repository": "electroaudiogram/resona.git",
   "bugs": "https://github.com/electroaudiogram/resona/issues",
@@ -48,16 +48,16 @@
     "react-dom": ">=19"
   },
   "devDependencies": {
-    "@resona/eslint-config-react": "workspace:*",
-    "@resona/typescript-config": "workspace:*",
     "@testing-library/jest-dom": "6.9.1",
     "@testing-library/react": "16.3.1",
     "@types/react": "19.2.8",
     "@types/react-dom": "19.2.3",
     "@vitest/coverage-v8": "4.0.17",
+    "eslint-config-react": "workspace:*",
     "jsdom": "27.4.0",
     "tsdown": "0.18.4",
     "typescript": "5.9.3",
+    "typescript-config": "workspace:*",
     "vitest": "4.0.16"
   }
 }

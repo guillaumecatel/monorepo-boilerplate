@@ -1,5 +1,5 @@
-import base from '@resona/eslint-config'
-import react from '@resona/eslint-config-react'
+import base from 'eslint-config'
+import react from 'eslint-config-react'
 
 const GLOB_TS = '**/*.{ts,tsx,cts,mts}'
 const GLOB_JS = '**/*.{js,jsx,cjs,mjs}'

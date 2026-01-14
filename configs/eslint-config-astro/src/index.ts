@@ -1,5 +1,5 @@
-import base from '@resona/eslint-config'
 import * as parserTs from '@typescript-eslint/parser'
+import base from 'eslint-config'
 import pluginAstro from 'eslint-plugin-astro'
 
 const GLOB_ASTRO = '**/*.astro'

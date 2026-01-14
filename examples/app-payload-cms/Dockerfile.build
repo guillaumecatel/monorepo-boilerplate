@@ -1,4 +1,6 @@
-# APP_NAME --> build
+# === BUILD STAGE TEMPLATE BELOW ===
+# Do not manually edit below this line - build stages are managed by turbo/generators
+
 FROM base AS APP_NAME-build
 COPY . /usr/src/app
 WORKDIR /usr/src/app

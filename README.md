@@ -207,7 +207,7 @@ cp .env.example .env
 
 These variables are used by generators to:
 
-- Set the `@scope` prefix for package names (e.g., `@resona/my-package`)
+- Set the `@scope` prefix for package names (e.g., `@myorg/my-package`)
 - Configure `author` field in generated `package.json` files
 - Set `repository` URLs in package metadata
 - Generate consistent naming across all packages
@@ -339,10 +339,10 @@ pnpm --filter=react-package add lodash
 pnpm --filter=react-package add -D @types/lodash
 
 # Add a workspace package as dependency
-pnpm --filter=astro-website add @resona/react-package@workspace:*
+pnpm --filter=astro-website add @myorg/react-package@workspace:*
 
 # Run command in all packages matching pattern
-pnpm --filter="@resona/*" build
+pnpm --filter="@myorg/*" build
 
 # Run command recursively in all packages
 pnpm -r exec pwd

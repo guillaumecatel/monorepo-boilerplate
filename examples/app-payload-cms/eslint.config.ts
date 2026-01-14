@@ -1,3 +1,3 @@
-import next from '@resona/eslint-config-next'
+import next from 'eslint-config-next'
 
 export default next
