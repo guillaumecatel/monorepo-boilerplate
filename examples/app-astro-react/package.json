@@ -5,7 +5,7 @@
   "scripts": {
     "astro": "astro",
     "build": "astro build",
-    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,.astro,tsconfig.tsbuildinfo}",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,.astro,tsconfig.tsbuildinfo,playwright-report,test-results}",
     "dev": "astro dev",
     "e2e": "pnpm exec playwright test",
     "lint": "eslint .",

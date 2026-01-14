@@ -6,7 +6,7 @@
   "license": "MIT",
   "scripts": {
     "build": "next build --webpack",
-    "clean": "shx rm -rf {node_modules,.turbo,.next,next-env.d.ts,coverage,storybook-static,tsconfig.tsbuildinfo}",
+    "clean": "shx rm -rf {node_modules,.turbo,.next,next-env.d.ts,coverage,storybook-static,tsconfig.tsbuildinfo,playwright-report,test-results}",
     "dev": "next dev --webpack",
     "dev:ci": "next dev --webpack",
     "e2e": "pnpm exec playwright test",
