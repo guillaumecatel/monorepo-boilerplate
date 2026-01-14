@@ -15,7 +15,7 @@
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "paraglide": "pnpm dlx @inlang/paraglide-js compile --project ../../project.inlang --outdir ./src/i18n",
-    "postinstall": "pnpm paraglide && pnpm exec playwright install --with-deps",
+    "postinstall": "pnpm paraglide",
     "predev": "docker compose up -d && payload seed",
     "seed": "payload seed",
     "start": "next start",
