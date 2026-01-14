@@ -20,7 +20,7 @@ const nextConfig: NextConfig = {
 
     webpackConfig.plugins.push(
       paraglideWebpackPlugin({
-        project: '../../.inlang',
+        project: '../../project.inlang',
         outdir: './src/i18n',
         strategy: ['url', 'cookie', 'baseLocale'],
       }),

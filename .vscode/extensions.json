@@ -6,7 +6,8 @@
     "playwright.playwright",
     "astro-build.astro-vscode",
     "EditorConfig.EditorConfig",
-    "vercel.turbo-vsc"
+    "vercel.turbo-vsc",
+    "inlang.vs-code-extension"
   ],
   "unwantedRecommendations": []
 }

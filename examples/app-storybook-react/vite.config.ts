@@ -23,7 +23,7 @@ export default defineConfig({
     tailwindcss(),
     react(),
     paraglideVitePlugin({
-      project: '../../.inlang',
+      project: '../../project.inlang',
       outdir: './.storybook/i18n',
     }),
   ],

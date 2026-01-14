@@ -324,7 +324,7 @@ import { languageTag } from '@/i18n/runtime'
 
 ### Adding a New Language
 
-1. Add the locale in `../../.inlang/settings.json`
+1. Add the locale in `../../project.inlang/settings.json`
 2. Create translation file `../../translations/{locale}.json`
 3. Add localized routes in `routes.ts`
 4. Run `pnpm build` to regenerate i18n files
@@ -618,7 +618,7 @@ export default defineConfig({
       tailwindcss(), // Tailwind CSS
       paraglideVitePlugin({
         // i18n
-        project: '../../.inlang',
+        project: '../../project.inlang',
         outdir: './src/i18n',
         strategy: ['url', 'preferredLanguage'],
         urlPatterns: routes,

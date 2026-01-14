@@ -13,7 +13,7 @@
     "generate:types": "payload generate:types",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
-    "paraglide": "pnpm dlx @inlang/paraglide-js compile --project ../../.inlang --outdir ./src/i18n",
+    "paraglide": "pnpm dlx @inlang/paraglide-js compile --project ../../project.inlang --outdir ./src/i18n",
     "postinstall": "pnpm paraglide && pnpm exec playwright install --with-deps",
     "predev": "docker compose up -d && payload seed",
     "seed": "payload seed",

@@ -148,7 +148,7 @@ pnpm dev
 ├── .husky/                      # Git hooks configuration
 │   └── pre-commit               # Pre-commit hook
 │
-├── .inlang/                     # Paraglide.js configuration
+├── project.inlang/                     # Paraglide.js configuration
 │   └── settings.json            # i18n settings
 │
 ├── .env.example                 # Environment variables template
@@ -569,7 +569,7 @@ i18n is powered by **Paraglide.js** from the inlang ecosystem.
 
 ### Configuration
 
-- **Settings:** `.inlang/settings.json`
+- **Settings:** `project.inlang/settings.json`
 - **Translations:** `translations/{locale}.json`
 - **Base locale:** French (`fr`)
 - **Supported locales:** French (`fr`), English (`en`)

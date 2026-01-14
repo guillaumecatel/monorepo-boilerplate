@@ -22,5 +22,7 @@
     "markdown"
   ],
 
+  "vitest.maximumConfigs": 20,
+
   "tailwindCSS.classFunctions": ["cva", "cx"]
 }

@@ -21,7 +21,7 @@ export default defineConfig({
       tailwindcss(),
       // @ts-ignore
       paraglideVitePlugin({
-        project: '../../.inlang',
+        project: '../../project.inlang',
         outdir: './src/i18n',
         strategy: ['url', 'preferredLanguage'],
         urlPatterns: routes,

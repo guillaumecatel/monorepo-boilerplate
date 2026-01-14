@@ -4,7 +4,7 @@ coverage/
 i18n/
 .astro/
 .husky/
-.inlang/
+project.inlang/
 
 .git
 .svn
