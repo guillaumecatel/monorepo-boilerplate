@@ -14,7 +14,7 @@ const defineConfig = (config: Config) => {
     bracketSpacing: true,
     bracketSameLine: true,
     overrides: [],
-    plugins: [],
+    plugins: ['prettier-plugin-sh'],
   }
 
   if (config.astro) {
