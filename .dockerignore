@@ -14,4 +14,3 @@ storybook-static
 coverage
 .DS_Store
 .env
-.npmrc

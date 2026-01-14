@@ -1,0 +1,27 @@
+# === RUNTIME STAGE TEMPLATE BELOW ===
+# Do not manually edit below this line - build stages are managed by turbo/generators
+
+FROM node:${NODE_VERSION}-alpine AS APP_NAME
+ENV NODE_ENV=production
+ENV NEXT_TELEMETRY_DISABLED=1
+ENV NEXT_PRIVATE_STANDALONE=true
+
+WORKDIR /prod/APP_NAME
+
+RUN addgroup --system --gid 1001 nodejs
+RUN adduser --system --uid 1001 nextjs
+
+COPY --from=APP_NAME-build --chown=nextjs:nodejs /prod/APP_NAME/.next/standalone ./
+COPY --from=APP_NAME-build --chown=nextjs:nodejs /prod/APP_NAME/.next/static ./.next/static
+COPY --from=APP_NAME-build --chown=nextjs:nodejs /prod/APP_NAME/node_modules ./node_modules
+
+RUN chmod -R a-w+x /prod/APP_NAME && chmod -R a+x /prod/APP_NAME/.next /prod/APP_NAME/node_modules
+
+USER nextjs
+
+EXPOSE 8888
+
+ENV PORT=8888
+ENV HOSTNAME="0.0.0.0"
+
+CMD ["node", "server.js"]
