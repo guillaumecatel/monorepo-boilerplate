@@ -644,7 +644,7 @@ Each app integrates Paraglide.js for type-safe translations. See individual app 
 
 ```bash
 # Error: The engine "node" is incompatible with this module
-nvm use  # Use the version specified in .nvmrc
+nvm use # Use the version specified in .nvmrc
 ```
 
 #### PNPM not found or wrong version
@@ -681,11 +681,11 @@ pnpm build --force
 ```bash
 # Ensure you're running from the correct directory
 # Root generators:
-pnpm gen  # From monorepo root
+pnpm gen # From monorepo root
 
 # Package-specific generators:
 cd packages/my-package
-pnpm gen  # From package directory
+pnpm gen # From package directory
 ```
 
 #### Docker build fails
