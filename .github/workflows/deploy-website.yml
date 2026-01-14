@@ -98,6 +98,9 @@ jobs:
       - name: 🧪 Test website
         run: pnpm test --filter=website
 
+      - name: 🎭 Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+
       - name: 🎭 E2E tests website
         run: pnpm e2e --filter=website
 

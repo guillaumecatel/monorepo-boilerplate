@@ -98,6 +98,9 @@ jobs:
       - name: 🧪 Test APP_NAME
         run: pnpm test --filter=APP_NAME
 
+      - name: 🎭 Install Playwright browsers
+        run: pnpm exec playwright install --with-deps
+
       - name: 🎭 E2E tests APP_NAME
         run: pnpm e2e --filter=APP_NAME
 
