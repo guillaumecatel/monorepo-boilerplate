@@ -48,7 +48,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
   })
 
   // Générateur de suppression d'apps
-  plop.setGenerator('delete-generated-app', {
+  plop.setGenerator('delete', {
     description: 'Supprimer une application existante',
     prompts: [
       {

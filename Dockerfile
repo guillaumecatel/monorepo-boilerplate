@@ -12,6 +12,5 @@ RUN corepack enable
 
 # === AUTO-GENERATED BUILD STAGES BELOW ===
 # Do not manually edit below this line - build stages are managed by turbo/generators
-
 # === AUTO-GENERATED RUNTIME STAGES BELOW ===
 # Do not manually edit below this line - runtime stages are managed by turbo/generators

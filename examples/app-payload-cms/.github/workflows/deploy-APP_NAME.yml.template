@@ -1,12 +1,12 @@
-name: Deploy
+name: Deploy APP_NAME
 
 on:
   push:
     tags:
-      - 'v*'
+      - 'APP_NAME-v*'
 
 concurrency:
-  group: deploy
+  group: deploy-APP_NAME
   cancel-in-progress: false
 
 jobs:
@@ -36,7 +36,7 @@ jobs:
             const { data: runs } = await github.rest.actions.listWorkflowRuns({
               owner: context.repo.owner,
               repo: context.repo.repo,
-              workflow_id: 'check-code.yml',
+              workflow_id: 'check-repository.yml',
               branch: 'main',
               status: 'success',
               per_page: 1
@@ -56,13 +56,20 @@ jobs:
     if: needs.check-main-status.outputs.should_deploy == 'true'
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        app:
-          - name: astro-website
-            target: astro-website-runtime
-          - name: storybook-react
-            target: storybook-react-runtime
+    services:
+      postgres:
+        image: postgres:latest
+        env:
+          POSTGRES_USER: ${{ secrets.DATABASE_USER }}
+          POSTGRES_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          POSTGRES_DB: ${{ secrets.DATABASE_NAME }}
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd="pg_isready"
+          --health-interval=10s
+          --health-timeout=5s
+          --health-retries=5
 
     permissions:
       contents: read
@@ -78,7 +85,45 @@ jobs:
 
       - name: 🏷️ Extract version from tag
         id: version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/}" >> $GITHUB_OUTPUT
+        run: echo "VERSION=${GITHUB_REF#refs/tags/APP_NAME-}" >> $GITHUB_OUTPUT
+
+      - name: 📦 Install PNPM
+        uses: pnpm/action-setup@v4
+
+      - name: 🟢 Setup Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          cache: pnpm
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 💾 Cache Turborepo
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-
+
+      - name:  Typecheck APP_NAME
+        run: pnpm typecheck --filter=APP_NAME
+
+      - name: 🧪 Test APP_NAME
+        run: pnpm test --filter=APP_NAME
+
+      - name: 🌱 Seed database
+        env:
+          DATABASE_USER: ${{ secrets.DATABASE_USER }}
+          DATABASE_PASSWORD: ${{ secrets.DATABASE_PASSWORD }}
+          DATABASE_NAME: ${{ secrets.DATABASE_NAME }}
+          DATABASE_PORT: 5432
+          DATABASE_HOST: localhost
+          PAYLOAD_SECRET: ${{ secrets.PAYLOAD_SECRET }}
+          PAYLOAD_EMAIL: ${{ secrets.PAYLOAD_EMAIL }}
+          PAYLOAD_PASSWORD: ${{ secrets.PAYLOAD_PASSWORD }}
+        run: pnpm --filter APP_NAME seed
 
       - name: 🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -90,11 +135,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📦 Metadata for ${{ matrix.app.name }} Docker image
+      - name: 📦 Metadata for APP_NAME Docker image
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-${{ matrix.app.name }}
+          images: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-APP_NAME
           tags: |
             type=raw,value=latest
             type=raw,value=${{ steps.version.outputs.VERSION }}
@@ -102,17 +147,17 @@ jobs:
             org.opencontainers.image.version=${{ steps.version.outputs.VERSION }}
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
 
-      - name: 🏗️ Build & Push ${{ matrix.app.name }} Docker image
+      - name: 🏗️ Build & Push APP_NAME Docker image
         uses: docker/build-push-action@v5
         with:
-          target: ${{ matrix.app.target }}
+          target: APP_NAME
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=${{ matrix.app.name }}
-          cache-to: type=gha,mode=max,scope=${{ matrix.app.name }}
+          cache-from: type=gha,scope=APP_NAME
+          cache-to: type=gha,mode=max,scope=APP_NAME
           build-args: |
             NODE_VERSION=${{ steps.nvm.outputs.NODE_VERSION }}

@@ -48,6 +48,11 @@ function copyRecursive(src: string, dest: string): void {
     return
   }
 
+  // Exclure le dossier .github (les workflows sont gérés à la racine)
+  if (name === '.github') {
+    return
+  }
+
   if (stat.isDirectory()) {
     // Renommer __generators__ en generators lors de la copie
     let finalDest = dest
@@ -222,7 +227,25 @@ export function createAppAction(exampleName: string) {
     const port = getNextAvailablePort()
     appendDockerStage(name, port, exampleName)
 
-    return `App copiée depuis examples/${exampleName} vers apps/${name} + Docker stage ajouté (port ${port})`
+    // Copier et personnaliser le workflow GitHub Actions
+    const workflowTemplatePath = resolve(
+      source,
+      '.github/workflows/deploy-APP_NAME.yml.template',
+    )
+    if (existsSync(workflowTemplatePath)) {
+      const workflowDir = resolve(process.cwd(), '.github/workflows')
+      if (!existsSync(workflowDir)) {
+        mkdirSync(workflowDir, { recursive: true })
+      }
+
+      const workflowContent = readFileSync(workflowTemplatePath, 'utf-8')
+      const updatedWorkflow = workflowContent.replaceAll('APP_NAME', name)
+
+      const workflowDestPath = resolve(workflowDir, `deploy-${name}.yml`)
+      writeFileSync(workflowDestPath, updatedWorkflow)
+    }
+
+    return `App copiée depuis examples/${exampleName} vers apps/${name} + Docker stage ajouté (port ${port}) + Workflow GitHub Actions créé`
   }
 }
 
@@ -276,12 +299,23 @@ export function deleteApp(appName: string): string {
     // Supprimer les stages Docker
     removeDockerStage(appName)
 
+    // Supprimer le workflow GitHub Actions
+    const workflowPath = resolve(
+      process.cwd(),
+      `.github/workflows/deploy-${appName}.yml`,
+    )
+    if (existsSync(workflowPath)) {
+      execSync(`pnpm shx rm -f "${workflowPath}"`, {
+        stdio: 'inherit',
+      })
+    }
+
     // Supprimer le dossier de l'app avec shx pour la compatibilité cross-platform
     execSync(`pnpm shx rm -rf "${appPath}"`, {
       stdio: 'inherit',
     })
 
-    return `✓ App "${appName}" et ses stages Docker supprimés avec succès`
+    return `✓ App "${appName}", ses stages Docker et son workflow supprimés avec succès`
   } catch (error) {
     return `✗ Erreur lors de la suppression: ${error}`
   }
