@@ -1,0 +1,22 @@
+{
+  "name": "eslint-config-react",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "clean": "shx rm -rf node_modules"
+  },
+  "peerDependencies": {
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "eslint-config": "workspace:*",
+    "eslint-plugin-react": "7.37.5"
+  },
+  "devDependencies": {
+    "eslint": "9.39.2"
+  }
+}

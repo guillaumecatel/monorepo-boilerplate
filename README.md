@@ -148,7 +148,7 @@ pnpm dev
 ├── .husky/                      # Git hooks configuration
 │   └── pre-commit               # Pre-commit hook
 │
-├── .inlang/                     # Paraglide.js configuration
+├── project.inlang/                     # Paraglide.js configuration
 │   └── settings.json            # i18n settings
 │
 ├── .env.example                 # Environment variables template
@@ -197,13 +197,13 @@ cp .env.example .env
 
 ### Available Variables
 
-| Variable                       | Description                        | Example                             |
-| ------------------------------ | ---------------------------------- | ----------------------------------- |
-| `ORGANIZATION_SCOPE_NAME`      | NPM scope for packages (without @) | `myorg`                             |
-| `ORGANIZATION_NAME`            | Organization display name          | `My Org`                            |
-| `ORGANIZATION_EMAIL`           | Contact email for package.json     | `contact@myorg.com`                 |
-| `ORGANIZATION_REPOSITORY_NAME` | Repository name                    | `monorepo`                          |
-| `ORGANIZATION_REPOSITORY_URL`  | Full repository URL                | `https://github.com/myorg/monorepo` |
+| Variable                       | Description                        | Example                                      |
+| ------------------------------ | ---------------------------------- | -------------------------------------------- |
+| `ORGANIZATION_SCOPE_NAME`      | NPM scope for packages (without @) | `guillaumecatel`                             |
+| `ORGANIZATION_NAME`            | Organization display name          | `Guillaume CATEL`                            |
+| `ORGANIZATION_EMAIL`           | Contact email for package.json     | `contact@guillaumecatel.com`                 |
+| `ORGANIZATION_REPOSITORY_NAME` | Repository name                    | `monorepo`                                   |
+| `ORGANIZATION_REPOSITORY_URL`  | Full repository URL                | `https://github.com/electroaudiogram/resona` |
 
 These variables are used by generators to:
 
@@ -569,7 +569,7 @@ i18n is powered by **Paraglide.js** from the inlang ecosystem.
 
 ### Configuration
 
-- **Settings:** `.inlang/settings.json`
+- **Settings:** `project.inlang/settings.json`
 - **Translations:** `translations/{locale}.json`
 - **Base locale:** French (`fr`)
 - **Supported locales:** French (`fr`), English (`en`)
@@ -644,7 +644,7 @@ Each app integrates Paraglide.js for type-safe translations. See individual app 
 
 ```bash
 # Error: The engine "node" is incompatible with this module
-nvm use  # Use the version specified in .nvmrc
+nvm use # Use the version specified in .nvmrc
 ```
 
 #### PNPM not found or wrong version
@@ -681,11 +681,11 @@ pnpm build --force
 ```bash
 # Ensure you're running from the correct directory
 # Root generators:
-pnpm gen  # From monorepo root
+pnpm gen # From monorepo root
 
 # Package-specific generators:
 cd packages/my-package
-pnpm gen  # From package directory
+pnpm gen # From package directory
 ```
 
 #### Docker build fails

@@ -1,21 +1,30 @@
 {
   "$schema": "https://turborepo.com/schema.json",
   "ui": "tui",
+  "globalDependencies": ["**/.env"],
   "tasks": {
     "build": {
       "dependsOn": ["^build"],
-      "outputs": ["dist/**", "storybook-static/**"]
+      "outputs": [
+        "dist/**",
+        "storybook-static/**",
+        ".next/**",
+        "!.next/cache/**"
+      ]
     },
     "dev": {
       "cache": false,
       "persistent": true
     },
     "test": {
-      "cache": false,
-      "persistent": true
+      "outputs": ["coverage/**"]
     },
-    "typecheck": {
-      "cache": false
+    "e2e": {
+      "outputs": ["playwright-report/**", "test-results/**"]
+    },
+    "typecheck": {},
+    "lint": {
+      "dependsOn": ["^lint"]
     },
     "clean": {
       "cache": false,

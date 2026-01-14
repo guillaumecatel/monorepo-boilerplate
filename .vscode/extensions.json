@@ -2,8 +2,12 @@
   "recommendations": [
     "dbaeumer.vscode-eslint",
     "esbenp.prettier-vscode",
+    "vitest.explorer",
+    "playwright.playwright",
     "astro-build.astro-vscode",
-    "EditorConfig.EditorConfig"
+    "EditorConfig.EditorConfig",
+    "vercel.turbo-vsc",
+    "inlang.vs-code-extension"
   ],
   "unwantedRecommendations": []
 }

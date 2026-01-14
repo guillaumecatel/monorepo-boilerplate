@@ -1,0 +1,139 @@
+name: Deploy APP_NAME
+
+on:
+  push:
+    tags:
+      - 'APP_NAME-v*'
+
+concurrency:
+  group: deploy-APP_NAME
+  cancel-in-progress: false
+
+jobs:
+  check-main-status:
+    runs-on: ubuntu-latest
+    outputs:
+      should_deploy: ${{ steps.check.outputs.should_deploy }}
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔍 Verify tag is on main branch
+        run: |
+          if ! git merge-base --is-ancestor ${{ github.sha }} origin/main; then
+            echo "❌ Tag must be on main branch"
+            exit 1
+          fi
+          echo "✅ Tag is on main branch"
+
+      - name: 🔍 Check if main branch CI passed
+        id: check
+        uses: actions/github-script@v7
+        with:
+          script: |
+            const { data: runs } = await github.rest.actions.listWorkflowRuns({
+              owner: context.repo.owner,
+              repo: context.repo.repo,
+              workflow_id: 'check-codebase.yml',
+              branch: 'main',
+              status: 'success',
+              per_page: 1
+            });
+
+            if (runs.workflow_runs.length === 0) {
+              core.setFailed('No successful CI run found on main branch');
+              core.setOutput('should_deploy', 'false');
+              return;
+            }
+
+            core.setOutput('should_deploy', 'true');
+            console.log('✅ Main branch CI is green, proceeding with deployment');
+
+  deploy:
+    needs: check-main-status
+    if: needs.check-main-status.outputs.should_deploy == 'true'
+    runs-on: ubuntu-latest
+
+    permissions:
+      contents: read
+      packages: write
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🤓 Read .nvmrc
+        id: nvm
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+
+      - name: 🏷️ Extract version from tag
+        id: version
+        run: echo "VERSION=${GITHUB_REF#refs/tags/APP_NAME-}" >> $GITHUB_OUTPUT
+
+      - name: 📦 Install PNPM
+        uses: pnpm/action-setup@v4
+
+      - name: 🟢 Setup Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          cache: pnpm
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 💾 Cache Turborepo
+        uses: actions/cache@v4
+        with:
+          path: .turbo
+          key: turbo-${{ runner.os }}-${{ github.sha }}
+          restore-keys: |
+            turbo-${{ runner.os }}-
+
+      - name:  Typecheck APP_NAME
+        run: pnpm typecheck --filter=APP_NAME
+
+      - name: 🧪 Test APP_NAME
+        run: pnpm test --filter=APP_NAME
+
+      - name: 🎭 E2E tests APP_NAME
+        run: pnpm e2e --filter=APP_NAME
+
+      - name: �🐳 Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+
+      - name: 🔐 Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: 📦 Metadata for APP_NAME Docker image
+        id: meta
+        uses: docker/metadata-action@v5
+        with:
+          images: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-APP_NAME
+          tags: |
+            type=raw,value=latest
+            type=raw,value=${{ steps.version.outputs.VERSION }}
+          labels: |
+            org.opencontainers.image.version=${{ steps.version.outputs.VERSION }}
+            org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
+
+      - name: 🏗️ Build & Push APP_NAME Docker image
+        uses: docker/build-push-action@v5
+        with:
+          target: APP_NAME
+          context: .
+          file: ./Dockerfile
+          platforms: linux/amd64
+          push: true
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
+          cache-from: type=gha,scope=APP_NAME
+          cache-to: type=gha,mode=max,scope=APP_NAME
+          build-args: |
+            NODE_VERSION=${{ steps.nvm.outputs.NODE_VERSION }}

@@ -4,6 +4,7 @@ coverage/
 i18n/
 .astro/
 .husky/
+project.inlang/
 
 .git
 .svn
@@ -11,3 +12,5 @@ i18n/
 pnpm-lock.yaml
 
 **/turbo/generators/**/*.hbs
+
+payload-types.ts

@@ -1,0 +1,11 @@
+{
+  "orgName": "myorg",
+  "repository": {
+    "url": "https://github.com/myorg/myrepo",
+    "type": "git"
+  },
+  "owner": {
+    "name": "MyOrg Team",
+    "email": "contact@myorg.com"
+  }
+}

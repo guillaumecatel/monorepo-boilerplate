@@ -1,0 +1,22 @@
+{
+  "name": "eslint-config-next",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "clean": "shx rm -rf node_modules"
+  },
+  "peerDependencies": {
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "eslint-config": "workspace:*",
+    "eslint-config-react": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "9.39.2"
+  }
+}

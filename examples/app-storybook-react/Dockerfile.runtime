@@ -1,0 +1,17 @@
+# === RUNTIME STAGE TEMPLATE BELOW ===
+# Do not manually edit below this line - runtime stages are managed by turbo/generators
+
+FROM gcr.io/distroless/nodejs${NODE_VERSION}-debian12 AS APP_NAME
+ENV NODE_ENV=production
+ENV PORT=8888
+
+WORKDIR /prod/APP_NAME
+COPY --from=APP_NAME-build --chown=nonroot:nonroot /prod/APP_NAME/storybook-static ./storybook-static
+COPY --from=APP_NAME-build --chown=nonroot:nonroot /prod/APP_NAME/node_modules ./node_modules
+COPY --from=APP_NAME-build --chown=nonroot:nonroot /prod/APP_NAME/server.mjs ./server.mjs
+
+USER nonroot
+EXPOSE 8888
+
+ENTRYPOINT ["/nodejs/bin/node"]
+CMD ["server.mjs"]

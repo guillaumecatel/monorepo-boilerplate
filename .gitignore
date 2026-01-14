@@ -27,5 +27,24 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea
 
+# Next.js
+.next/
+out/
+next-env.d.ts
+
+# Payload CMS
+/media
+
+# Playwright
+test-results/
+playwright-report/
+blob-report/
+playwright/.cache/
+/playwright/.auth/
+
+# Storybook
 *storybook.log
 storybook-static
+
+# TypeScript
+*.tsbuildinfo

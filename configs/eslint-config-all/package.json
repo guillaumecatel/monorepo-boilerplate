@@ -1,0 +1,25 @@
+{
+  "name": "eslint-config-all",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "clean": "shx rm -rf node_modules"
+  },
+  "peerDependencies": {
+    "eslint": "^9.39.2"
+  },
+  "dependencies": {
+    "eslint-config": "workspace:*",
+    "eslint-config-astro": "workspace:*",
+    "eslint-config-next": "workspace:*",
+    "eslint-config-react": "workspace:*",
+    "eslint-config-storybook": "workspace:*"
+  },
+  "devDependencies": {
+    "eslint": "9.39.2"
+  }
+}

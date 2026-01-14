@@ -1,6 +1,7 @@
 packages:
   - apps/*
   - configs/*
+  - examples/*
   - packages/*
 
 autoInstallPeers: true
@@ -19,6 +20,7 @@ onlyBuiltDependencies:
   - sharp
 
 overrides:
+  esbuild@<=0.24.2: '>=0.25.0'
   js-yaml@>=4.0.0 <4.1.1: '>=4.1.1'
   qs@<6.14.1: '>=6.14.1'
   tmp@<=0.2.3: '>=0.2.4'

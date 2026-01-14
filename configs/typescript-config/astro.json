@@ -1,0 +1,9 @@
+{
+  "display": "Astro",
+  "extends": "./base.json",
+  "compilerOptions": {
+    "target": "ESNext"
+  },
+  "include": [".astro/types.d.ts", "**/*"],
+  "exclude": ["dist", "node_modules"]
+}

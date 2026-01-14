@@ -1,117 +1,75 @@
 import type { PlopTypes } from '@turbo/gen'
 
-import type {
-  AppTemplate,
-  InstallDepsActionData,
-  PackageTemplate,
-  PromptData,
-} from './types'
-
-import initActions from './actions'
-import initHelpers from './helpers'
-import { validateName } from './validators'
+import {
+  createAppAction,
+  createNamePrompt,
+  createPackageAction,
+  deleteApp,
+  getAvailableApps,
+} from './utils'
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
-  initHelpers(plop)
-  initActions(plop)
-
-  plop.setGenerator('app', {
-    description: '💻 Create a new application inside project',
-    prompts: [
-      {
-        type: 'list',
-        name: 'template',
-        message: 'Choose an application template',
-        choices: plop.getHelper('getTemplates')('apps'),
-      },
-      {
-        type: 'input',
-        name: 'name',
-        message: 'Choose an application name',
-        validate: (input) => validateName(input, 'Name'),
-      },
-    ],
-    actions: (answers) => {
-      const actions: PlopTypes.ActionType[] = []
-      const { name, template, packages } = answers as PromptData<AppTemplate>
-
-      // copy template files
-      actions.push({
-        type: 'addMany',
-        base: `templates/apps/${template}`,
-        destination: `apps/${plop.getHelper('kebabCase')(name)}`,
-        templateFiles: [`templates/apps/${template}/**`],
-        globOptions: { dot: true },
-      })
-
-      // install dependencies
-      actions.push({
-        type: 'installDeps',
-        data: {
-          packagePath: `apps/${plop.getHelper('kebabCase')(name)}`,
-          packageName: plop.getHelper('kebabCase')(name),
-          packages: packages || [],
-        } as InstallDepsActionData,
-      })
-
-      return actions
-    },
+  // Générateurs d'apps
+  plop.setGenerator('create-astro-react-app', {
+    description: 'Créer une nouvelle app Astro React',
+    prompts: createNamePrompt('app'),
+    actions: [createAppAction('app-astro-react')],
   })
 
-  plop.setGenerator('package', {
-    description: '📦 Create a new package',
+  plop.setGenerator('create-payload-cms-app', {
+    description: 'Créer une nouvelle app Payload CMS',
+    prompts: createNamePrompt('app'),
+    actions: [createAppAction('app-payload-cms')],
+  })
+
+  plop.setGenerator('create-storybook-react-app', {
+    description: 'Créer une nouvelle app Storybook React',
+    prompts: createNamePrompt('app'),
+    actions: [createAppAction('app-storybook-react')],
+  })
+
+  // Générateurs de packages
+  plop.setGenerator('create-assets-package', {
+    description: "Créer un nouveau package d'assets",
+    prompts: createNamePrompt('package'),
+    actions: [createPackageAction('package-assets')],
+  })
+
+  plop.setGenerator('create-react-package', {
+    description: 'Créer un nouveau package React',
+    prompts: createNamePrompt('package'),
+    actions: [createPackageAction('package-react')],
+  })
+
+  plop.setGenerator('create-typescript-package', {
+    description: 'Créer un nouveau package TypeScript',
+    prompts: createNamePrompt('package'),
+    actions: [createPackageAction('package-typescript')],
+  })
+
+  // Générateur de suppression d'apps
+  plop.setGenerator('delete', {
+    description: 'Supprimer une application existante',
     prompts: [
       {
         type: 'list',
-        name: 'template',
-        message: 'Choose a package template',
-        choices: plop.getHelper('getTemplates')('packages'),
+        name: 'appName',
+        message: 'Quelle application voulez-vous supprimer ?',
+        choices: getAvailableApps(),
       },
       {
-        type: 'input',
-        name: 'name',
-        message: 'Choose a package name',
-        validate: (input) => validateName(input, 'Name'),
-      },
-      {
-        type: 'input',
-        name: 'description',
-        message: 'Set a description (optional)',
+        type: 'confirm',
+        name: 'confirm',
+        message: (answers: Record<string, unknown>) =>
+          `Êtes-vous sûr de vouloir supprimer l'app "${answers.appName}" et ses stages Docker ?`,
+        default: false,
       },
     ],
-
     actions: (answers) => {
-      const actions: PlopTypes.ActionType[] = []
-      const { name, template, packages } =
-        answers as PromptData<PackageTemplate>
-
-      // copy base files
-      actions.push({
-        type: 'addMany',
-        base: `templates/internal/base`,
-        destination: `packages/${plop.getHelper('kebabCase')(name)}`,
-        templateFiles: [`templates/internal/base/**`],
-        data: { dir: 'packages' },
-      })
-
-      // copy templates files
-      actions.push({
-        type: 'addMany',
-        base: `templates/packages/${template}`,
-        destination: `packages/${plop.getHelper('kebabCase')(name)}`,
-        templateFiles: [`templates/packages/${template}/**`],
-      })
-
-      // install deps
-      actions.push({
-        type: 'installDeps',
-        data: {
-          packagePath: `packages/${plop.getHelper('kebabCase')(name)}`,
-          packages: packages || [],
-        } as InstallDepsActionData,
-      })
-
-      return actions
+      if (!answers || !answers.confirm) {
+        return []
+      }
+      return [() => deleteApp(answers.appName)]
     },
   })
 }

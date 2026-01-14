@@ -1,0 +1,44 @@
+{
+  "name": "example-assets",
+  "version": "0.0.1",
+  "description": "False",
+  "type": "module",
+  "license": "MIT",
+  "author": "MyOrg Team <contact@myorg.com>",
+  "homepage": "https://github.com/myorg/myorg#readme",
+  "repository": "myorg/myorg.git",
+  "bugs": "https://github.com/myorg/myorg/issues",
+  "keywords": [
+    "false"
+  ],
+  "files": [
+    "./dist"
+  ],
+  "exports": {
+    "./*": "./src/*",
+    "./index.d.ts": "./src/index.d.ts",
+    "./inter-regular.ttf": "./src/Inter-Regular.ttf"
+  },
+  "publishConfig": {
+    "exports": {
+      "./inter-regular.ttf": "./dist/Inter-Regular.ttf",
+      "./index.d.ts": "./dist/index.d.ts",
+      "./*": "./dist/*"
+    }
+  },
+  "scripts": {
+    "build": "shx mkdir -p dist && shx rm -rf dist/* && shx cp src/*.{woff,woff2,ttf,otf,eot} dist/ 2>/dev/null || true && shx cp src/index.d.ts dist/",
+    "clean": "shx rm -rf {node_modules,.turbo,dist,tsconfig.tsbuildinfo}",
+    "dev": "nodemon --watch src --ext woff,woff2,ttf,otf,eot,d.ts --exec 'shx mkdir -p dist && shx rm -rf dist/* && shx cp src/*.{woff,woff2,ttf,otf,eot} dist/ 2>/dev/null || true && shx cp src/index.d.ts dist/'",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "typecheck": "tsc --noEmit"
+  },
+  "peerDependencies": {},
+  "dependencies": {},
+  "devDependencies": {
+    "eslint-config": "workspace:*",
+    "nodemon": "3.1.11",
+    "typescript-config": "workspace:*"
+  }
+}
