@@ -4,15 +4,27 @@ import js from '@eslint/js'
 import perfectionist from 'eslint-plugin-perfectionist'
 import pluginPrettier from 'eslint-plugin-prettier'
 import globals from 'globals'
-import { fileURLToPath } from 'node:url'
+import { existsSync } from 'node:fs'
+import { dirname, join } from 'node:path'
 import tseslint from 'typescript-eslint'
 
 const GLOB_TS = '**/*.{ts,tsx,cts,mts}'
 const GLOB_JS = '**/*.{js,jsx,cjs,mjs}'
 
-const gitignorePath = fileURLToPath(
-  new URL('../../../.gitignore', import.meta.url),
-)
+// Find .gitignore by traversing up from current working directory
+function findGitignore(startDir: string = process.cwd()): string | null {
+  let currentDir = startDir
+  while (currentDir !== dirname(currentDir)) {
+    const gitignorePath = join(currentDir, '.gitignore')
+    if (existsSync(gitignorePath)) {
+      return gitignorePath
+    }
+    currentDir = dirname(currentDir)
+  }
+  return null
+}
+
+const gitignorePath = findGitignore()
 
 /**
  * Base TypeScript configuration
@@ -20,7 +32,7 @@ const gitignorePath = fileURLToPath(
  */
 const base = [
   globalIgnores(['**/i18n/**']),
-  includeIgnoreFile(gitignorePath),
+  ...(gitignorePath ? [includeIgnoreFile(gitignorePath)] : []),
   ...tseslint.configs.recommended,
 
   {
