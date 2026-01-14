@@ -1,0 +1,6 @@
+export const PROJECT_NAME = 'Simple Website'
+export const PROJECT_SHORT_NAME = 'SW'
+export const PROJECT_DESCRIPTION = 'A minimalistic website boilerplate'
+export const PROJECT_LIGHT_BACKGROUND_COLOR = '#ffffff'
+export const PROJECT_DARK_BACKGROUND_COLOR = '#000000'
+export const TWITTER_HANDLE = '@SimpleWebsite'

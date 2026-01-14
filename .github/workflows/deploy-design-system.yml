@@ -1,12 +1,12 @@
-name: Deploy website
+name: Deploy design-system
 
 on:
   push:
     tags:
-      - 'website-v*'
+      - 'design-system-v*'
 
 concurrency:
-  group: deploy-website
+  group: deploy-design-system
   cancel-in-progress: false
 
 jobs:
@@ -70,7 +70,7 @@ jobs:
 
       - name: 🏷️ Extract version from tag
         id: version
-        run: echo "VERSION=${GITHUB_REF#refs/tags/website-}" >> $GITHUB_OUTPUT
+        run: echo "VERSION=${GITHUB_REF#refs/tags/design-system-}" >> $GITHUB_OUTPUT
 
       - name: 📦 Install PNPM
         uses: pnpm/action-setup@v4
@@ -92,14 +92,14 @@ jobs:
           restore-keys: |
             turbo-${{ runner.os }}-
 
-      - name: Typecheck website
-        run: pnpm typecheck --filter=website
+      - name: Typecheck design-system
+        run: pnpm typecheck --filter=design-system
 
-      - name: 🧪 Test website
-        run: pnpm test --filter=website
+      - name: 🧪 Test design-system
+        run: pnpm test --filter=design-system
 
-      - name: 🎭 E2E tests website
-        run: pnpm e2e --filter=website
+      - name: 🎭 E2E tests design-system
+        run: pnpm e2e --filter=design-system
 
       - name: �🐳 Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
@@ -111,11 +111,11 @@ jobs:
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
 
-      - name: 📦 Metadata for website Docker image
+      - name: 📦 Metadata for design-system Docker image
         id: meta
         uses: docker/metadata-action@v5
         with:
-          images: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-website
+          images: ghcr.io/${{ github.repository_owner }}/${{ github.event.repository.name }}-design-system
           tags: |
             type=raw,value=latest
             type=raw,value=${{ steps.version.outputs.VERSION }}
@@ -123,17 +123,17 @@ jobs:
             org.opencontainers.image.version=${{ steps.version.outputs.VERSION }}
             org.opencontainers.image.source=${{ github.server_url }}/${{ github.repository }}
 
-      - name: 🏗️ Build & Push website Docker image
+      - name: 🏗️ Build & Push design-system Docker image
         uses: docker/build-push-action@v5
         with:
-          target: website
+          target: design-system
           context: .
           file: ./Dockerfile
           platforms: linux/amd64
           push: true
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
-          cache-from: type=gha,scope=website
-          cache-to: type=gha,mode=max,scope=website
+          cache-from: type=gha,scope=design-system
+          cache-to: type=gha,mode=max,scope=design-system
           build-args: |
             NODE_VERSION=${{ steps.nvm.outputs.NODE_VERSION }}

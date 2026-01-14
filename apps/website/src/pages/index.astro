@@ -1,0 +1,25 @@
+---
+import { m } from '@/i18n/messages'
+import { locales, localizeHref } from '@/i18n/runtime'
+
+import HelloWorld from '@/components/HelloWorld'
+
+import Layout from '@/layouts/Layout.astro'
+
+const metadata = {
+  title: m.say_hi({ username: 'John Doe' }),
+  description: m.sample_text(),
+  alternates: locales.map((locale) => ({
+    locale,
+    href: localizeHref('', { locale }),
+  })),
+}
+---
+
+<Layout metadata={metadata}>
+  <main id='main-content'>
+    <h1>{metadata.title}</h1>
+    <p>{metadata.description}</p>
+    <HelloWorld client:visible />
+  </main>
+</Layout>
