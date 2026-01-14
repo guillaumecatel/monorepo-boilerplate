@@ -7,11 +7,11 @@
     "build": "astro build",
     "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,.astro,tsconfig.tsbuildinfo}",
     "dev": "astro dev",
+    "e2e": "pnpm exec playwright test",
     "lint": "eslint .",
     "lint:fix": "eslint . --fix",
     "start": "node server.mjs",
     "test": "vitest --coverage",
-    "e2e": "pnpm exec playwright test",
     "typecheck": "astro check"
   },
   "dependencies": {
@@ -35,7 +35,7 @@
     "@types/node": "25.0.3",
     "@types/react": "19.2.8",
     "@types/react-dom": "19.2.3",
-    "@vitest/coverage-v8": "4.0.17",
+    "@vitest/coverage-v8": "4.0.16",
     "astro": "5.16.9",
     "astro-capo": "0.0.1",
     "astro-compressor": "1.2.0",

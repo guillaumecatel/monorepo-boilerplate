@@ -1,7 +1,7 @@
 {
   "orgName": "myorg",
   "repository": {
-    "url": "https://github.com/myorg/myorg",
+    "url": "https://github.com/myorg/myrepo",
     "type": "git"
   },
   "owner": {

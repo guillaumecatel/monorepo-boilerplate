@@ -4,10 +4,10 @@
   "description": "False",
   "type": "module",
   "license": "MIT",
-  "author": "Resona <contact@myorg.art>",
-  "homepage": "https://github.com/electroaudiogram/resona#readme",
-  "repository": "electroaudiogram/resona.git",
-  "bugs": "https://github.com/electroaudiogram/resona/issues",
+  "author": "MyOrg Team <contact@myorg.com>",
+  "homepage": "https://github.com/myorg/myorg#readme",
+  "repository": "myorg/myorg.git",
+  "bugs": "https://github.com/myorg/myorg/issues",
   "keywords": [
     "false"
   ],

@@ -11,6 +11,7 @@ export default {
     },
   ],
   sortAz: [
+    'scripts',
     'peerDependencies',
     'dependencies',
     'devDependencies',

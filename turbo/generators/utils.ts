@@ -238,6 +238,8 @@ export function createPackageAction(exampleName: string) {
     pkg.name = `@${meta.orgName}/${name}`
     pkg.repository = meta.repository
     pkg.author = `${meta.owner.name} <${meta.owner.email}>`
+    pkg.homepage = `${meta.repository.url}#readme`
+    pkg.bugs = `${meta.repository.url}/issues`
     writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
 
     // Remplacer le scope dans le générateur du package
