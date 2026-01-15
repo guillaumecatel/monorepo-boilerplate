@@ -4,7 +4,7 @@
   "description": "False",
   "type": "module",
   "license": "MIT",
-  "private": false,
+  "private": true,
   "author": "MyOrg Team <contact@myorg.com>",
   "homepage": "https://github.com/myorg/myorg#readme",
   "repository": "myorg/myorg.git",
