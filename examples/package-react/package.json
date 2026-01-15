@@ -4,6 +4,7 @@
   "description": "A React component library package",
   "type": "module",
   "license": "MIT",
+  "private": false,
   "author": "MyOrg Team <contact@myorg.com>",
   "homepage": "https://github.com/myorg/myorg#readme",
   "repository": "myorg/myorg.git",

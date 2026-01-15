@@ -1,0 +1,58 @@
+name: Publish Packages
+
+on:
+  push:
+    branches:
+      - main
+
+concurrency:
+  group: publish-packages
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+  packages: write
+  pull-requests: write
+
+jobs:
+  release:
+    name: Release packages
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: ⬇️ Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🤓 Read .nvmrc
+        id: nvm
+        run: echo "NODE_VERSION=$(cat .nvmrc)" >> $GITHUB_OUTPUT
+
+      - name: 📦 Install PNPM
+        uses: pnpm/action-setup@v4
+
+      - name: 🟢 Setup Node.js ${{ steps.nvm.outputs.NODE_VERSION }}
+        uses: actions/setup-node@v4
+        with:
+          node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
+          cache: pnpm
+          registry-url: 'https://npm.pkg.github.com'
+          scope: '@myorg'
+
+      - name: 📥 Install dependencies
+        run: pnpm install
+
+      - name: 🏗️ Build packages
+        run: pnpm build:packages
+
+      - name: 📝 Create Release Pull Request or Publish
+        id: changesets
+        uses: changesets/action@v1
+        with:
+          publish: pnpm publish:packages
+          commit: 'chore: release packages'
+          title: 'chore: release packages'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

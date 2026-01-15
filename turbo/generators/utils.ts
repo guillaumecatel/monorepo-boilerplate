@@ -263,6 +263,10 @@ export function createPackageAction(exampleName: string) {
     pkg.author = `${meta.owner.name} <${meta.owner.email}>`
     pkg.homepage = `${meta.repository.url}#readme`
     pkg.bugs = `${meta.repository.url}/issues`
+    pkg.publishConfig = {
+      registry: 'https://npm.pkg.github.com',
+      access: 'public',
+    }
     writeFileSync(pkgPath, JSON.stringify(pkg, null, 2) + '\n')
 
     // Remplacer le scope dans le générateur du package
@@ -276,7 +280,7 @@ export function createPackageAction(exampleName: string) {
       writeFileSync(generatorConfigPath, updatedContent)
     }
 
-    return `Package copié depuis examples/${exampleName} vers packages/${name}`
+    return `Package copié depuis examples/${exampleName} vers packages/${name} - Prêt pour publication sur GitHub Packages`
   }
 }
 
@@ -284,6 +288,14 @@ export function getAvailableApps(): string[] {
   const appsDir = resolve(process.cwd(), 'apps')
   if (!existsSync(appsDir)) return []
   return readdirSync(appsDir, { withFileTypes: true })
+    .filter((dirent) => dirent.isDirectory())
+    .map((dirent) => dirent.name)
+}
+
+export function getAvailablePackages(): string[] {
+  const packagesDir = resolve(process.cwd(), 'packages')
+  if (!existsSync(packagesDir)) return []
+  return readdirSync(packagesDir, { withFileTypes: true })
     .filter((dirent) => dirent.isDirectory())
     .map((dirent) => dirent.name)
 }
@@ -316,6 +328,25 @@ export function deleteApp(appName: string): string {
     })
 
     return `✓ App "${appName}", ses stages Docker et son workflow supprimés avec succès`
+  } catch (error) {
+    return `✗ Erreur lors de la suppression: ${error}`
+  }
+}
+
+export function deletePackage(packageName: string): string {
+  const packagePath = resolve(process.cwd(), 'packages', packageName)
+
+  if (!existsSync(packagePath)) {
+    return `Le package "${packageName}" n'existe pas`
+  }
+
+  try {
+    // Supprimer le dossier du package avec shx pour la compatibilité cross-platform
+    execSync(`pnpm shx rm -rf "${packagePath}"`, {
+      stdio: 'inherit',
+    })
+
+    return `✓ Package "${packageName}" supprimé avec succès`
   } catch (error) {
     return `✗ Erreur lors de la suppression: ${error}`
   }

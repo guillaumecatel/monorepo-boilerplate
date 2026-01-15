@@ -5,7 +5,9 @@ import {
   createNamePrompt,
   createPackageAction,
   deleteApp,
+  deletePackage,
   getAvailableApps,
+  getAvailablePackages,
 } from './utils'
 
 export default function generator(plop: PlopTypes.NodePlopAPI): void {
@@ -48,7 +50,7 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
   })
 
   // Générateur de suppression d'apps
-  plop.setGenerator('delete', {
+  plop.setGenerator('delete-app', {
     description: 'Supprimer une application existante',
     prompts: [
       {
@@ -70,6 +72,32 @@ export default function generator(plop: PlopTypes.NodePlopAPI): void {
         return []
       }
       return [() => deleteApp(answers.appName)]
+    },
+  })
+
+  // Générateur de suppression de packages
+  plop.setGenerator('delete-package', {
+    description: 'Supprimer un package existant',
+    prompts: [
+      {
+        type: 'list',
+        name: 'packageName',
+        message: 'Quel package voulez-vous supprimer ?',
+        choices: getAvailablePackages(),
+      },
+      {
+        type: 'confirm',
+        name: 'confirm',
+        message: (answers: Record<string, unknown>) =>
+          `Êtes-vous sûr de vouloir supprimer le package "${answers.packageName}" ?`,
+        default: false,
+      },
+    ],
+    actions: (answers) => {
+      if (!answers || !answers.confirm) {
+        return []
+      }
+      return [() => deletePackage(answers.packageName)]
     },
   })
 }

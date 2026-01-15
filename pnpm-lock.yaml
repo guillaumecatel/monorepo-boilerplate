@@ -36,7 +36,7 @@ importers:
         version: 9.39.2(jiti@2.6.1)
       eslint-config-all:
         specifier: workspace:*
-        version: file:configs/eslint-config-all(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
+        version: link:configs/eslint-config-all
       husky:
         specifier: 9.1.7
         version: 9.1.7
@@ -756,6 +756,27 @@ importers:
         version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.2)
 
   examples/package-typescript:
+    devDependencies:
+      '@vitest/coverage-v8':
+        specifier: 4.0.16
+        version: 4.0.16(@vitest/browser@4.0.16(vite@7.3.0(@types/node@25.0.3)(jiti@2.6.1)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.2))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.2)))(vitest@4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.2))
+      eslint-config:
+        specifier: workspace:*
+        version: link:../../configs/eslint-config
+      tsdown:
+        specifier: 0.18.4
+        version: 0.18.4(oxc-resolver@11.16.2)(synckit@0.11.11)(typescript@5.9.3)
+      typescript:
+        specifier: 5.9.3
+        version: 5.9.3
+      typescript-config:
+        specifier: workspace:*
+        version: link:../../configs/typescript-config
+      vitest:
+        specifier: 4.0.16
+        version: 4.0.16(@types/node@25.0.3)(jiti@2.6.1)(jsdom@27.4.0)(lightningcss@1.30.2)(sass@1.77.4)(terser@5.44.1)(tsx@4.20.6)(yaml@2.8.2)
+
+  packages/shared:
     devDependencies:
       '@vitest/coverage-v8':
         specifier: 4.0.16
@@ -4296,36 +4317,6 @@ packages:
     engines: {node: '>=12'}
     peerDependencies:
       eslint: '>=6.0.0'
-
-  eslint-config-all@file:configs/eslint-config-all:
-    resolution: {directory: configs/eslint-config-all, type: directory}
-    peerDependencies:
-      eslint: ^9.39.2
-
-  eslint-config-astro@file:configs/eslint-config-astro:
-    resolution: {directory: configs/eslint-config-astro, type: directory}
-    peerDependencies:
-      eslint: ^9.39.2
-
-  eslint-config-next@file:configs/eslint-config-next:
-    resolution: {directory: configs/eslint-config-next, type: directory}
-    peerDependencies:
-      eslint: ^9.39.2
-
-  eslint-config-react@file:configs/eslint-config-react:
-    resolution: {directory: configs/eslint-config-react, type: directory}
-    peerDependencies:
-      eslint: ^9.39.2
-
-  eslint-config-storybook@file:configs/eslint-config-storybook:
-    resolution: {directory: configs/eslint-config-storybook, type: directory}
-    peerDependencies:
-      eslint: ^9.39.2
-
-  eslint-config@file:configs/eslint-config:
-    resolution: {directory: configs/eslint-config, type: directory}
-    peerDependencies:
-      eslint: ^9.39.2
 
   eslint-plugin-astro@1.5.0:
     resolution: {integrity: sha512-IWy4kY3DKTJxd7g652zIWpBGFuxw7NIIt16kyqc8BlhnIKvI8yGJj+Maua0DiNYED3F/D8AmzoTTTA6A95WX9g==}
@@ -12370,91 +12361,6 @@ snapshots:
     dependencies:
       eslint: 9.39.2(jiti@2.6.1)
       semver: 7.7.3
-
-  eslint-config-all@file:configs/eslint-config-all(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3):
-    dependencies:
-      eslint: 9.39.2(jiti@2.6.1)
-      eslint-config: file:configs/eslint-config(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-config-astro: file:configs/eslint-config-astro(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-config-next: file:configs/eslint-config-next(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-config-react: file:configs/eslint-config-react(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-config-storybook: file:configs/eslint-config-storybook(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(storybook@10.1.11(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.3)
-    transitivePeerDependencies:
-      - '@types/eslint'
-      - eslint-config-prettier
-      - prettier
-      - storybook
-      - supports-color
-      - typescript
-
-  eslint-config-astro@file:configs/eslint-config-astro(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3):
-    dependencies:
-      '@typescript-eslint/parser': 8.52.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      eslint: 9.39.2(jiti@2.6.1)
-      eslint-config: file:configs/eslint-config(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-plugin-astro: 1.5.0(eslint@9.39.2(jiti@2.6.1))
-      eslint-plugin-jsx-a11y: 6.10.2(eslint@9.39.2(jiti@2.6.1))
-    transitivePeerDependencies:
-      - '@types/eslint'
-      - eslint-config-prettier
-      - prettier
-      - supports-color
-      - typescript
-
-  eslint-config-next@file:configs/eslint-config-next(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3):
-    dependencies:
-      eslint: 9.39.2(jiti@2.6.1)
-      eslint-config: file:configs/eslint-config(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-config-react: file:configs/eslint-config-react(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-    transitivePeerDependencies:
-      - '@types/eslint'
-      - eslint-config-prettier
-      - prettier
-      - supports-color
-      - typescript
-
-  eslint-config-react@file:configs/eslint-config-react(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3):
-    dependencies:
-      eslint: 9.39.2(jiti@2.6.1)
-      eslint-config: file:configs/eslint-config(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-plugin-react: 7.37.5(eslint@9.39.2(jiti@2.6.1))
-    transitivePeerDependencies:
-      - '@types/eslint'
-      - eslint-config-prettier
-      - prettier
-      - supports-color
-      - typescript
-
-  eslint-config-storybook@file:configs/eslint-config-storybook(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(storybook@10.1.11(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.3):
-    dependencies:
-      eslint: 9.39.2(jiti@2.6.1)
-      eslint-config: file:configs/eslint-config(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-config-react: file:configs/eslint-config-react(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3)
-      eslint-plugin-storybook: 10.1.11(eslint@9.39.2(jiti@2.6.1))(storybook@10.1.11(@testing-library/dom@10.4.1)(prettier@3.7.4)(react-dom@19.2.3(react@19.2.3))(react@19.2.3))(typescript@5.9.3)
-    transitivePeerDependencies:
-      - '@types/eslint'
-      - eslint-config-prettier
-      - prettier
-      - storybook
-      - supports-color
-      - typescript
-
-  eslint-config@file:configs/eslint-config(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)(typescript@5.9.3):
-    dependencies:
-      '@eslint/compat': 2.0.0(eslint@9.39.2(jiti@2.6.1))
-      '@eslint/config-helpers': 0.5.0
-      '@eslint/js': 9.39.2
-      eslint: 9.39.2(jiti@2.6.1)
-      eslint-plugin-perfectionist: 5.1.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-      eslint-plugin-prettier: 5.5.4(eslint@9.39.2(jiti@2.6.1))(prettier@3.7.4)
-      globals: 16.5.0
-      typescript-eslint: 8.51.0(eslint@9.39.2(jiti@2.6.1))(typescript@5.9.3)
-    transitivePeerDependencies:
-      - '@types/eslint'
-      - eslint-config-prettier
-      - prettier
-      - supports-color
-      - typescript
 
   eslint-plugin-astro@1.5.0(eslint@9.39.2(jiti@2.6.1)):
     dependencies:

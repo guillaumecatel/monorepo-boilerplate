@@ -1,13 +1,13 @@
 {
-  "name": "@myorg/example-typescript",
+  "name": "@myorg/shared",
   "description": "Utilities for projects",
   "type": "module",
   "license": "MIT",
   "private": false,
   "author": "MyOrg Team <contact@myorg.com>",
-  "homepage": "https://github.com/myorg/myorg#readme",
-  "repository": "myorg/myorg.git",
-  "bugs": "https://github.com/myorg/myorg/issues",
+  "homepage": "https://github.com/myorg/myrepo#readme",
+  "repository": "myorg/myrepo",
+  "bugs": "https://github.com/myorg/myrepo/issues",
   "keywords": [
     "utilities",
     "helpers",
@@ -22,23 +22,8 @@
     "./guards": "./src/guards.ts"
   },
   "publishConfig": {
-    "exports": {
-      "./alias": {
-        "import": "./dist/alias.js",
-        "require": "./dist/alias.cjs",
-        "types": "./dist/alias.d.ts"
-      },
-      "./guards": {
-        "import": "./dist/guards.js",
-        "require": "./dist/guards.cjs",
-        "types": "./dist/guards.d.ts"
-      },
-      ".": {
-        "import": "./dist/*.js",
-        "require": "./dist/*.cjs",
-        "types": "./dist/*.d.ts"
-      }
-    }
+    "access": "public",
+    "registry": "https://npm.pkg.github.com"
   },
   "scripts": {
     "build": "tsdown",

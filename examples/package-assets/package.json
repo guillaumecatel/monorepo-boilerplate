@@ -1,9 +1,10 @@
 {
-  "name": "example-assets",
+  "name": "@myorg/example-assets",
   "version": "0.0.1",
   "description": "False",
   "type": "module",
   "license": "MIT",
+  "private": false,
   "author": "MyOrg Team <contact@myorg.com>",
   "homepage": "https://github.com/myorg/myorg#readme",
   "repository": "myorg/myorg.git",

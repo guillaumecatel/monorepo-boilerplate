@@ -4,6 +4,7 @@
   "description": "A blank template to get started with Payload 3.0",
   "type": "module",
   "license": "MIT",
+  "private": true,
   "scripts": {
     "build": "next build --webpack",
     "clean": "shx rm -rf {node_modules,.turbo,.next,next-env.d.ts,coverage,storybook-static,tsconfig.tsbuildinfo,playwright-report,test-results}",

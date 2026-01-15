@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "type": "module",
   "license": "UNLICENSED",
+  "private": true,
   "scripts": {
     "build": "storybook build",
     "clean": "shx rm -rf {node_modules,.turbo,dist,coverage,storybook-static,tsconfig.tsbuildinfo}",
