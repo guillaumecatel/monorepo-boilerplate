@@ -280,7 +280,25 @@ export function createPackageAction(exampleName: string) {
       writeFileSync(generatorConfigPath, updatedContent)
     }
 
-    return `Package copié depuis examples/${exampleName} vers packages/${name} - Prêt pour publication sur GitHub Packages`
+    // Créer le workflow GitHub Actions pour le package
+    const workflowDir = resolve(process.cwd(), '.github/workflows')
+    const workflowTemplatePath = resolve(
+      source,
+      '.github/workflows/deploy-PACKAGE_NAME.yml.template',
+    )
+
+    if (existsSync(workflowTemplatePath)) {
+      const workflowContent = readFileSync(workflowTemplatePath, 'utf-8')
+      const scopedPackageName = `@${meta.orgName}/${name}`
+      const updatedWorkflow = workflowContent
+        .replaceAll('PACKAGE_NAME', name)
+        .replaceAll('SCOPED_PACKAGE_NAME', scopedPackageName)
+
+      const workflowDestPath = resolve(workflowDir, `deploy-${name}.yml`)
+      writeFileSync(workflowDestPath, updatedWorkflow)
+    }
+
+    return `Package copié depuis examples/${exampleName} vers packages/${name} + Workflow GitHub Actions créé - Prêt pour publication sur GitHub Packages`
   }
 }
 
@@ -341,12 +359,23 @@ export function deletePackage(packageName: string): string {
   }
 
   try {
+    // Supprimer le workflow GitHub Actions
+    const workflowPath = resolve(
+      process.cwd(),
+      `.github/workflows/deploy-${packageName}.yml`,
+    )
+    if (existsSync(workflowPath)) {
+      execSync(`pnpm shx rm -f "${workflowPath}"`, {
+        stdio: 'inherit',
+      })
+    }
+
     // Supprimer le dossier du package avec shx pour la compatibilité cross-platform
     execSync(`pnpm shx rm -rf "${packagePath}"`, {
       stdio: 'inherit',
     })
 
-    return `✓ Package "${packageName}" supprimé avec succès`
+    return `✓ Package "${packageName}" et son workflow supprimés avec succès`
   } catch (error) {
     return `✗ Erreur lors de la suppression: ${error}`
   }

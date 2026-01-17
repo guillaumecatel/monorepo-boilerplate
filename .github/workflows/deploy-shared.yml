@@ -1,29 +1,27 @@
-name: Publish Packages
+name: Deploy shared
 
 on:
   push:
-    branches:
-      - main
-
-concurrency:
-  group: publish-packages
-  cancel-in-progress: false
+    tags:
+      - 'shared-v*'
 
 permissions:
-  contents: write
+  contents: read
   packages: write
-  pull-requests: write
 
 jobs:
-  release:
-    name: Release packages
+  check:
+    name: Check code quality
+    uses: ./.github/workflows/check-repository.yml
+
+  publish:
+    name: Publish package
     runs-on: ubuntu-latest
+    needs: check
 
     steps:
       - name: ⬇️ Checkout code
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
       - name: 🤓 Read .nvmrc
         id: nvm
@@ -38,21 +36,20 @@ jobs:
           node-version: ${{ steps.nvm.outputs.NODE_VERSION }}
           cache: pnpm
           registry-url: 'https://npm.pkg.github.com'
-          scope: '@myorg'
 
       - name: 📥 Install dependencies
-        run: pnpm install
+        run: pnpm install --frozen-lockfile
 
-      - name: 🏗️ Build packages
-        run: pnpm build:packages
+      - name: 🔍 Typecheck
+        run: pnpm --filter=@myorg/shared typecheck
 
-      - name: 📝 Create Release Pull Request or Publish
-        id: changesets
-        uses: changesets/action@v1
-        with:
-          publish: pnpm publish:packages
-          commit: 'chore: release packages'
-          title: 'chore: release packages'
+      - name: 🧪 Run tests
+        run: pnpm --filter=@myorg/shared test
+
+      - name: 🏗️ Build package
+        run: pnpm --filter=@myorg/shared build
+
+      - name: 📤 Publish to GitHub Packages
+        run: pnpm --filter=@myorg/shared publish --no-git-checks --access public
         env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
