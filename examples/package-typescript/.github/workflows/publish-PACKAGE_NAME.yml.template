@@ -1,9 +1,12 @@
-name: Deploy shared
+# Ne pas copier ce fichier - utilisé comme template pour les workflows de packages
+# Ce workflow est automatiquement généré lors de la création d'un package avec pnpm gen
+
+name: Publish PACKAGE_NAME
 
 on:
   push:
     tags:
-      - 'shared-v*'
+      - 'PACKAGE_NAME-v*'
 
 permissions:
   contents: read
@@ -41,15 +44,15 @@ jobs:
         run: pnpm install --frozen-lockfile
 
       - name: 🔍 Typecheck
-        run: pnpm --filter=@myorg/shared typecheck
+        run: pnpm --filter=SCOPED_PACKAGE_NAME typecheck
 
       - name: 🧪 Run tests
-        run: pnpm --filter=@myorg/shared test
+        run: pnpm --filter=SCOPED_PACKAGE_NAME test
 
       - name: 🏗️ Build package
-        run: pnpm --filter=@myorg/shared build
+        run: pnpm --filter=SCOPED_PACKAGE_NAME build
 
       - name: 📤 Publish to GitHub Packages
-        run: pnpm --filter=@myorg/shared publish --no-git-checks --access public
+        run: pnpm --filter=SCOPED_PACKAGE_NAME publish --no-git-checks --access public
         env:
           NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}

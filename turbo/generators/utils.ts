@@ -284,7 +284,7 @@ export function createPackageAction(exampleName: string) {
     const workflowDir = resolve(process.cwd(), '.github/workflows')
     const workflowTemplatePath = resolve(
       source,
-      '.github/workflows/deploy-PACKAGE_NAME.yml.template',
+      '.github/workflows/publish-PACKAGE_NAME.yml.template',
     )
 
     if (existsSync(workflowTemplatePath)) {
@@ -294,7 +294,7 @@ export function createPackageAction(exampleName: string) {
         .replaceAll('PACKAGE_NAME', name)
         .replaceAll('SCOPED_PACKAGE_NAME', scopedPackageName)
 
-      const workflowDestPath = resolve(workflowDir, `deploy-${name}.yml`)
+      const workflowDestPath = resolve(workflowDir, `publish-${name}.yml`)
       writeFileSync(workflowDestPath, updatedWorkflow)
     }
 
@@ -362,7 +362,7 @@ export function deletePackage(packageName: string): string {
     // Supprimer le workflow GitHub Actions
     const workflowPath = resolve(
       process.cwd(),
-      `.github/workflows/deploy-${packageName}.yml`,
+      `.github/workflows/publish-${packageName}.yml`,
     )
     if (existsSync(workflowPath)) {
       execSync(`pnpm shx rm -f "${workflowPath}"`, {
