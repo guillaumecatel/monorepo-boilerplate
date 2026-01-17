@@ -1,11 +1,11 @@
 {
-  "orgName": "myorg",
+  "orgName": "guillaumecatel",
   "repository": {
-    "url": "https://github.com/myorg/myrepo",
+    "url": "https://github.com/guillaumecatel/monorepo-boilerplate",
     "type": "git"
   },
   "owner": {
-    "name": "MyOrg Team",
-    "email": "contact@myorg.com"
+    "name": "Guillaume Catel",
+    "email": "contact@guillaumecatel.com"
   }
 }
