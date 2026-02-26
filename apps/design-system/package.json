@@ -34,7 +34,7 @@
     "@vitest/coverage-v8": "4.0.16",
     "eslint-config-storybook": "workspace:*",
     "playwright": "1.57.0",
-    "storybook": "10.1.11",
+    "storybook": "10.2.10",
     "tailwindcss": "4.1.18",
     "tailwindcss-config": "workspace:*",
     "typescript": "5.9.3",
